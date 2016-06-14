@@ -7,7 +7,8 @@ $(document).ready(function(){
     var imgSudahBerganti = "";
 	var title;
 	var textContent;
-
+    var finalSub;
+    var cekFinalSub = $('input[name="etype3"]:checked').val();
     var loading = $.loading();
     $('#ajaxLoading img').each(function () {
           var curSrc = $(this).attr('src');
@@ -39,8 +40,97 @@ $(document).ready(function(){
         $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
 
         e.preventDefault();
-    });
+        });
 	});
+
+    $("input[name='etype']").change(function(){
+        var kategoriTerpilih = $('input[name="etype"]:checked').val();
+        $('#isi-sub-kategori').html("");
+        $('#sub-kategori label').html("");
+        $('#isi-sub-kategori2').html("");
+        $('#sub-kategori2 label').html("");
+        if (kategoriTerpilih == "artikel") {
+            // alert("artikel");
+
+            finalSub = "false";
+            cekFinalSub = "";
+            $('#sub-kategori label').html("Jenis Artikel");
+            $('#isi-sub-kategori').append('' +
+                '<label><input type="radio" name="etype2" value="coding"> Coding </label>' + 
+                '<label style="margin-left:10px;"><input type="radio" name="etype2" value="berita-hot"> Berita Hot </label>' +  
+                '<label style="margin-left:10px;"><input type="radio" name="etype2" value="pengetahuan-umum"> Pengetahuan Umum </label>');
+
+            $('#sub-kategori').show();
+        }
+        else{
+            // alert("tutorial");
+            $('#sub-kategori label').html("Jenis Tutorial");
+            $('#isi-sub-kategori').append('' + 
+                '<label><input type="radio" name="etype2" value="coding"> Coding </label>' + 
+                '<label style="margin-left:10px;"><input type="radio" name="etype2" value="sulap"> Sulap </label>' +  
+                '<label style="margin-left:10px;"><input type="radio" name="etype2" value="game"> Game </label>');
+
+            $('#sub-kategori').show();   
+
+            $("input[name='etype2']").change(function(){
+                // alert('x');
+                var kategori2 = $('input[name="etype2"]:checked').val();     
+                $('#sub-kategori2 label').html("");
+                $('#isi-sub-kategori2').html("");
+                if (kategori2 == "coding") {
+                    finalSub = "true";
+                    $('#sub-kategori2 label').html("Jenis Tutorial Coding");
+                    $('#isi-sub-kategori2').append('<label><input type="radio" name="etype3" value="coding-php"> PHP </label>' + 
+                        '<label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-dot-net"> .NET </label>' +  
+                        '<label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-java-desktop">Java Desktop </label>' +  
+                        '<label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-java-mobile">Java Mobile </label>');   
+                }
+                else if (kategori2 == "game") {
+                    finalSub = "true";
+                    $('#sub-kategori2 label').html("Jenis Tutorial Game");
+                    $('#isi-sub-kategori2').append('<label><input type="radio" name="etype3" value="game-ps"> Playstation </label>' + 
+                            '<label style="margin-left:10px;"><input type="radio" name="etype3" value="game-pc"> PC </label>' +  
+                        '<label style="margin-left:10px;"><input type="radio" name="etype3" value="game-mobile"> Mobile </label>' +  
+                        '<label style="margin-left:10px;"><input type="radio" name="etype3" value="game-jadul"> Jadul </label>');   
+                }
+                else{
+                    finalSub = "false";
+                    cekFinalSub = "";
+                }
+                $('#sub-kategori2').show();
+            });
+        }
+
+    });
+
+
+            $("input[name='etype2']").change(function(){
+                // alert('x');
+                var kategori2 = $('input[name="etype2"]:checked').val();     
+                $('#sub-kategori2 label').html("");
+                $('#isi-sub-kategori2').html("");
+                if (kategori2 == "coding") {
+                    finalSub = "true";
+                    $('#sub-kategori2 label').html("Jenis Tutorial Coding");
+                    $('#isi-sub-kategori2').append('<label><input type="radio" name="etype3" value="coding-php"> PHP </label>' + 
+                        '<label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-dot-net"> .NET </label>' +  
+                        '<label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-java-desktop">Java Desktop </label>' +  
+                        '<label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-java-mobile">Java Mobile </label>');   
+                }
+                else if (kategori2 == "game") {
+                    finalSub = "true";
+                    $('#sub-kategori2 label').html("Jenis Tutorial Game");
+                    $('#isi-sub-kategori2').append('<label><input type="radio" name="etype3" value="game-ps"> Playstation </label>' + 
+                            '<label style="margin-left:10px;"><input type="radio" name="etype3" value="game-pc"> PC </label>' +  
+                        '<label style="margin-left:10px;"><input type="radio" name="etype3" value="game-mobile"> Mobile </label>' +  
+                        '<label style="margin-left:10px;"><input type="radio" name="etype3" value="game-jadul"> Jadul </label>');   
+                }
+                else{
+                    finalSub = "false";
+                    cekFinalSub = "";
+                }
+                $('#sub-kategori2').show();
+            });
 
 	// FUNGSI UNTUK SHOW BUTTON DELETE FOTO UTAMA POST
 	$('#btn-delete-foto').click(function(event){    
@@ -123,27 +213,37 @@ $(document).ready(function(){
             var isiArtikel = $('#message').summernote('code');
             var titleArtikel = $('#title').val();
             var kategori = $('input[name="etype"]:checked').val();
+            var subKategori = $('input[name="etype2"]:checked').val();
+            var anakSubKategori =  $('input[name="etype3"]:checked').val();
+            var penginput = $('input[name="penginput"]').val();
 
-            if (cekButton == "kembalikan") {
-                $('#inputpicture').val('');
+            alert(subKategori);
+            if (finalSub == "true" ){ 
+                subKategori = anakSubKategori;
+                alert(subKategori);
             }
+            else if(cekFinalSub != ""){
+                subKategori = anakSubKategori;
+                alert(subKategori);   
+            }
+
             if($('#inputpicture').val() == ""){
-                requestUploadArtikel(titleArtikel, isiArtikel, kategori, null);
+                requestUploadArtikel(titleArtikel, isiArtikel, kategori, subKategori, null);
             }
             else{
                 var ajax = function(imageData){
-                requestUploadArtikel(titleArtikel, isiArtikel, kategori, imageData);
+                requestUploadArtikel(titleArtikel, isiArtikel, kategori, subKategori, imageData);
                 }
 
                 imageupload($('#inputpicture').get(0), ajax);
 
             }
         } else {
-            alert("Rejected");
+
         }
     }
 
-    function requestUploadArtikel(title, isi, kategori, imageData){
+    function requestUploadArtikel(title, isi, kategori, subKategori, imageData){
         $.ajaxSetup({
             headers: {
               'X-CSRF-TOKEN':$('meta[name="csrf_token"]').attr('content')
@@ -158,6 +258,7 @@ $(document).ready(function(){
                 'isi' 	: isi,
                 'kategori' : kategori,
                 'image' : imageData,
+                'subKategori' : subKategori,
                 'foto' : fotoSrc
             },
             dataType: "json",
@@ -165,8 +266,18 @@ $(document).ready(function(){
             success : function(result){
                 if (result) {
                     $('.alerts').html("");
+                    var sukses = "<div class='alert alert-success text-center' role='alert'><strong>"+ result.error +"</strong>"+ result.message +"</div>";
                     if (result.error_code==0) {
-                        $('.alerts').append("<div class='alert alert-success text-center' role='alert'><strong>"+ result.error +"</strong>"+ result.message +"</div>").fadeIn(200).fadeToggle(10000).fadeOut(50);
+                        bootbox.dialog({
+                                message: sukses,
+                                title: "Sukses",
+                                buttons: {
+                                    danger: {
+                                    label: "Oke Sipz!",
+                                    className: "btn-primary"
+                                    }
+                                }
+                            });
                     }
                     else{
 						$('.alerts').append("<div class='alert alert-warning text-center' role='alert'><strong>"+ result.error +"</strong>"+ result.message +"</div>").fadeIn(200).fadeToggle(10000).fadeOut(50);
@@ -181,20 +292,34 @@ $(document).ready(function(){
         error:function(jqXhr){
         	var errors = jqXhr.responseJSON; 
             console.log(jqXhr);
-            errorsHtml = "<div class='alert alert-warning text-center' role='alert'>Something Wrong.. Try again submit yout Edited post....";
+            var errorMessage;
+            var count = 1;
+            errorsHtml = "<div class='alert alert-danger text-center' role='alert'><b>";
             $.each( errors , function( key, value ) {
-                    errorsHtml +=  value[0] ; 
+                    errorsHtml +=  count +". "+ value[0] + '<br>' ; 
+                    errorMessage += value[0] ; 
                     console.log(value[0]);
+                    count += 1;
             });
-            errorsHtml += "</div>";
-          
-            $('.alerts').html("");
-			$('.alerts').append(errorsHtml).fadeIn(200).fadeToggle(10000).fadeOut(50);
-            loading.close();
+            errorsHtml += "</b></div>";
+            bootbox.dialog({
+                        message: errorsHtml,
+                        title: "Error",
+                        buttons: {
+                        danger: {
+                        label: "Periksa Kembali..",
+                        className: "btn-primary"
+                    }
+                }
+            });
+   //          $('.alerts').html("");
+            // $('.alerts').append(errorsHtml).fadeIn(200).fadeToggle(10000).fadeOut(50);
 
+            loading.close();
             $('html, body').animate({
                 scrollTop: $('.alerts').offset().top
             }, 1000);   
+
         }
       }, "json");
     }

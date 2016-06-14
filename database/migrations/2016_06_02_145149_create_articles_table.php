@@ -19,6 +19,7 @@ class CreateArticlesTable extends Migration
             $table->string('path');
             $table->string('slug');
             $table->string('kategori');
+            $table->string('SubKategori');
             $table->string('penginput');
             $table->timestamps();
         });

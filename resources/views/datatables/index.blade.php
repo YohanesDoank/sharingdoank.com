@@ -12,12 +12,12 @@ active
 <script src="js/1.9.1/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href='css/font_OpenSans.css' rel='stylesheet' type='text/css'>
 <link href='css/font_Lato.css' rel='stylesheet' type='text/css'>
-<link href='css/font_PlayFair.css' rel='stylesheet' type='text/css'>
+<link href='css/font_PlayFair.css' rel='stylesheet' type='text/css'> -->
 <link href='css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
         function hideURLbar(){ window.scrollTo(0,1); }
@@ -82,9 +82,11 @@ active
         <div class="article">
         <div class="alerts"></div>
         <div class="alerts2"></div>
-           <div class="form-group has-feedback">
-                <h3><b>Daftar Posting</b></h3>
+            <div class="content-info">
+                <h2>List Post</h2>
+                <p>Ini adalah daftar Postingan...</p>
             </div>
+            <br>
             <div class="table-responsive">
                 <table class="table table-bordered" id="users-table">
                     <thead>
@@ -121,13 +123,14 @@ $(function() {
             { data: 'created_at', name: 'created_at' },
             { data: 'updated_at', name: 'updated_at' },
             { mRender: function(data, type, row){
-                    return "<button><a href='post/edit/"+ row.id +"' class='glyphicon glyphicon-pencil' aria-hidden='true'></a></button>";
+                    return "<center><a href='post/edit/"+ row.id +"' class='glyphicon glyphicon-edit btn btn-primary'> Edit"
+                    "</a></center>";
 
                 },
             },
 
             { mRender: function(data, type, row){
-                    return "<button><a onclick='cekNiatDelete("+row.id+","+row.data+")' class='glyphicon glyphicon-trash delete-artikel' name="+ row.title +" data-id="+row.id+" aria-hidden='true'></a></button>";
+                    return "<center><a onclick='cekNiatDelete("+row.id+","+row.data+")' class='glyphicon glyphicon-trash delete-artikel btn btn-danger' name="+ row.title +" data-id="+row.id+" aria-hidden='true'> Delete</a></center>";
 
                 }
 

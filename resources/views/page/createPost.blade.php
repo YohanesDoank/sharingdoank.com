@@ -34,10 +34,10 @@ active
 @section('content')
 <div class="content">
 	<div class="container">
-		<div class="content-text facilis">	
-				<div class="alerts"></div>
+		<div class="content-text facilis">
+		<div class="alerts"></div>
 				<div class="some-title">
-					<h3><a href="single">Create POST</a></h3>
+					<h3>Create POST</h3>
 				</div>
 					<!-- ini bagian summernote-->
 					<br><br><br>
@@ -54,8 +54,23 @@ active
 	                <div class="form-group">
 	                	<label for="title" class="control-label col-sm-2">Kategori Post</label>
 	            		 <div class="col-sm-10">
-		                		<label><input type="radio" name="etype" value="artikel" checked="checked"> Artikel </label>
+		                		<label><input type="radio" name="etype" value="artikel"> Artikel </label>
 		                		<label><input type="radio" name="etype" value="tutorial"> Tutorial </label>
+		                		&nbsp &nbsp <span class="error-input"></span>
+	                    </div>
+	                </div>
+	                <br>
+	                <div class="form-group" id="sub-kategori" hidden="">
+	                	<label for="title2" class="control-label col-sm-2"></label>
+	            		 <div class="col-sm-10" id="isi-sub-kategori" >
+		                		
+	                    </div>
+	                </div>
+	                <br>
+	                <div class="form-group" id="sub-kategori2" hidden="">
+	                	<label for="title3" class="control-label col-sm-2"></label>
+	            		 <div class="col-sm-10" id="isi-sub-kategori2" >
+		                		
 	                    </div>
 	                </div>
 	                <br>

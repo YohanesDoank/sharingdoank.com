@@ -20,6 +20,8 @@ class PostController extends Controller
     protected $rules = [
         'title' => ['required', 'max:255', 'unique:article,title'],
         'isi' => ['required'],
+        'kategori' => ['required'],
+        'subKategori' => ['required'],
         'image' => ['required'],
 
     ];
@@ -28,17 +30,23 @@ class PostController extends Controller
             'title.required'  => ' Harus Isi judul ' ,
             'title.unique'  => ' Judul sudah Diambil ',
             'isi.required' => ' Harus Isi content ',
+            'kategori.required' => ' Pilih salah satu kategori ',
+            'subKategori.required' => ' Pilih salah satu Sub kategori ',
             'image.required' => ' Kudu ngasi Gambar utama Artikel ',
     ];
     
     protected $rulesEdit = [
         'title' => ['required', 'max:255'],
-        'isi' => ['required']
+        'isi' => ['required'],
+        'kategori' => ['required'],
+        'subKategori' => ['required'],
     ];
 
     protected $messageRulesEdit = [
             'title.required'  => ' Harus Isi judul ',
-            'isi.required' => 'isi content juga'
+            'isi.required' => 'isi content juga',
+            'kategori.required' => ' Pilih salah satu kategori ',
+            'subKategori.required' => ' Pilih salah satu Sub kategori ',
     ];
 
     // for create articles purposes
@@ -56,6 +64,7 @@ class PostController extends Controller
             $artikel->slug = str_replace(" ", '-', strtolower($request->title));
             $artikel->path = $this->saveImage($request->image);
             $artikel->kategori = $request->kategori;
+            $artikel->SubKategori = $request->subKategori;
             $artikel->penginput = $request->penginput;
 
             // $artikel->kategori = $request->kategori;
@@ -106,6 +115,7 @@ class PostController extends Controller
             $artikel->content = $this->generateImage($request->isi);
             $artikel->slug = str_slug($request->title, "-");
             $artikel->kategori = $request->kategori;
+            $artikel->SubKategori = $request->subKategori;
             $artikel->updated_at = $request->updated_at;
 
             $artikel->save();
@@ -114,7 +124,7 @@ class PostController extends Controller
 
             $err_code = 0;
             $error = "Success!";
-            $message = ", Artikel berhasil diedit!";
+            $message = ", Postingan berhasil diedit!";
 
         }catch(Exception $e){
             $err_code = 0;

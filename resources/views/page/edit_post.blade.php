@@ -60,6 +60,113 @@ cap
 	                    </div>
 	                </div>
 	                <br>
+	                <div class="form-group" id="sub-kategori">
+	                	<label for="title2" class="control-label col-sm-2">
+	                	<?php $jenis; $finalSub = "";
+	                		if ($editValue->kategori == "artikel") {
+	                			$jenis = "artikel";
+	                			echo "Jenis Artikel";} 
+	                		else{
+	                			$jenis = "tutorial";
+	                			echo "Jenis Tutorial";} 
+	                		?>
+	                	</label>
+	            		 <div class="col-sm-10" id="isi-sub-kategori" >
+		                		<?php 
+		                			if ($jenis == "artikel" ) {
+		                		?>
+		                		<label><input type="radio" name="etype2" value="coding" <?php if ($editValue->SubKategori == "coding") 
+		                		echo 'checked="true"';
+		                		 ?>> Coding </label>
+		        				<label style="margin-left:10px;"><input type="radio" name="etype2" value="berita-hot" <?php if ($editValue->SubKategori == "berita-hot") 
+		                		echo 'checked="true"';
+		                		 ?>> Berita Hot </label>
+                				<label style="margin-left:10px;"><input type="radio" name="etype2" value="pengetahuan-umum" <?php if ($editValue->SubKategori == "pengetahuan-umum") 
+		                		echo 'checked="true"';
+		                		 ?>> Pengetahuan Umum </label>
+		                		<?php
+		                			$finalSub = "";
+		                			}
+		                			else if($editValue->kategori == "tutorial"){
+		                				// if (strpos($editValue->SubKategori, '-') !== false) {
+		                				// 	echo "ada -";
+		                				// }
+		                		?>
+		                			<label><input type="radio" name="etype2" value="coding" 
+		                				<?php if (substr($editValue->SubKategori, 0, 6) == "coding") {
+					                		echo 'checked="true"'; 
+					                		$finalSub = "coding";
+					                		}
+		                		 		?>
+		                		 	> Coding </label>
+		        				<label style="margin-left:10px;"><input type="radio" name="etype2" value="sulap" <?php if ($editValue->SubKategori == "sulap"){ 
+		                		echo 'checked="true"';  $finalSub = "";}
+		                		 ?>> Sulap </label>
+                				<label style="margin-left:10px;"><input type="radio" name="etype2" value="game" <?php if (substr($editValue->SubKategori, 0, 4) == "game") {
+		                		echo 'checked="true"'; $finalSub = "game";}
+		                		 ?>> Game </label>
+		                		<?php
+		                			}
+
+		                		?>
+	                    </div>
+	                </div>
+	                <br>
+	                <div class="form-group" id="sub-kategori2" 
+	                <?php if ($finalSub == "") {
+	                		echo 'hidden=""';
+	                } ?>
+	                >
+	                	<label for="title3" class="control-label col-sm-2">
+	                		<?php 
+		                		if ($jenis == "artikel") {
+		                			echo "Jenis Artikel "; echo ucfirst($finalSub);} 
+		                		else{
+		                			echo "Jenis Tutorial "; echo ucfirst($finalSub);} 
+	                		 ?>
+	                	</label>
+	            		 <div class="col-sm-10" id="isi-sub-kategori2" >
+		                		<?php 
+		                			if ($finalSub == "coding") {
+		                		?>
+		                		<label><input type="radio" name="etype3" value="coding-php" <?php if ($editValue->SubKategori == "coding-php") {
+		                			echo 'checked="true"';
+		                		} ?>> PHP </label>
+                        <label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-dot-net" <?php if ($editValue->SubKategori == "coding-dot-net") {
+		                			echo 'checked="true"';
+		                		} ?>> .NET </label>
+                        <label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-java-desktop" <?php if ($editValue->SubKategori == "coding-java-desktop") {
+		                			echo 'checked="true"';
+		                		} ?>>Java Desktop </label>
+                        <label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-java-mobile" <?php if ($editValue->SubKategori == "coding-java-mobile") {
+		                			echo 'checked="true"';
+		                		} ?>>Java Mobile </label>
+		                		<?php
+		                			}
+		                			else if($finalSub == "game") {
+		                		?>
+		                	<label><input type="radio" name="etype3" value="game-ps"  <?php if ($editValue->SubKategori == "game-ps") {
+		                		echo 'checked=""';
+		                	}
+		                	 ?>> Playstation </label>
+                        	<label style="margin-left:10px;"><input type="radio" name="etype3" value="game-pc"  <?php if ($editValue->SubKategori == "game-pc") {
+		                		echo 'checked=""';
+		                	}
+		                	 ?>> PC </label>
+                        	<label style="margin-left:10px;"><input type="radio" name="etype3" value="game-mobile"  <?php if ($editValue->SubKategori == "game-mobile") {
+		                		echo 'checked=""';
+		                	}
+		                	 ?>> Mobile </label>
+                        	<label style="margin-left:10px;"><input type="radio" name="etype3" value="game-jadul"  <?php if ($editValue->SubKategori == "game-jadul") {
+		                		echo 'checked=""';
+		                	}
+		                	 ?>> Jadul </label>		
+		                		<?php
+		                	}
+		                		?>
+	                    </div>
+	                </div>
+	                <br>
 					<div class="form-group">
 						<label for="title" class="control-label col-sm-2">Main Photo</label>
 					    <div class="col-sm-10" style="margin-top: 5px;">
