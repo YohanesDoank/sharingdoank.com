@@ -18,7 +18,7 @@ Single Sharing's Doank's
 					<h3>{!! $message->title !!}</h3>
 				</div>
 				<div class="john">
-					<p><a href="#">Admin</a><span>{!! $message->created_at !!}</span></p>
+					<p><a href="#">{!! $message->penginput !!}</a><span>{!! $message->created_at !!}</span></p>
 				</div>
 				<div class="clearfix"> </div>
 				<div class="tilte-grid">
@@ -32,13 +32,13 @@ Single Sharing's Doank's
 					<?php
 						}
 					?>
+				</div>
 					<p class="vel"><a href="{!! $message->slug !!}">Phasellus vel arcu vitae neque sagittis aliquet ac at purus.
 					Vestibulum varius eros in dui sagittis non ultrices orci hendrerit.
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></p>
 					<p class="Sed">
 						{!! $message->content !!}
 					</p> 
-				</div>
 				@endforeach
 				<div class="related-posts">
 					<h3>Related Posts</h3>

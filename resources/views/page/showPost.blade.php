@@ -54,7 +54,7 @@ Articles Sharing's Doank's
                     <li class="@yield('selected-create')">
                         <a href="{{ url('/createPost') }}">Create Post</a>
                     </li>
-                    <li class="cap">
+                    <li class="active">
                         <a href="{{ url('/showPost') }}">Kelola Post</a>
                     </li>
 					<li class="@yield('selected-logout')">

@@ -5,7 +5,7 @@ Tutorials Sharing's Doank's
 @endsection
 
 @section('selected-tutorials')
-cap
+active
 @endsection
 
 @section('content')
@@ -56,14 +56,14 @@ cap
 					<?php  
 						if ($editValue->path != "") {
 					?>
-						<div class="tilte-grid">
+						<div class="tilte-grid2">
 							<a class="url-tutorial" href="{!! $editValue->kategori !!}/{!! $editValue->slug !!}"><img width="330" height="281" src="{!! $editValue->path !!}" alt=" " /></a>
 						</div>
 					<?php 
 						}
 						else{
 					?>
-						<div class="tilte-grid">
+						<div class="tilte-grid2">
 							<a class="url-tutorial" href="{!! $editValue->kategori !!}/{!! $editValue->slug !!}"><img width="330" height="281" src="no-image" alt=" " /></a>
 						</div>
 					<?php

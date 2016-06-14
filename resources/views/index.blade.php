@@ -9,7 +9,7 @@ Sharing's Doank's
 @endsection
 
 @section('selected-index')
-cap
+active
 @endsection
 
 @section('footer-home')
@@ -38,6 +38,7 @@ cap1
 				</div>
 				<div class="clearfix"> </div>
 				<div class="tilte-grid">
+				<center>
 					<?php  
 						if ($editValue->path != "") {
 					?>
@@ -50,13 +51,12 @@ cap1
 					<?php
 						}
 					?>
-					
-					<p class="vel"><a href="{!! $editValue->kategori !!}/{!! $editValue->slug !!}">Phasellus vel arcu vitae neque sagittis aliquet ac at purus.
-					Vestibulum varius eros in dui sagittis non ultrices orci hendrerit.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					</center>
+					<p class="vel"><a href="{!! $editValue->kategori !!}/{!! $editValue->slug !!}">
+						{!!str_limit(strip_tags($editValue->content), 150 , " ........................")!!}
 					</a></p>
 					<p class="Sed">
-					{!!str_limit(strip_tags($editValue->content), 150 , " ........................")!!}</p> 
+					</p> 
 				</div>
 				<div class="read">
 					<a href="{!! $editValue->kategori !!}/{!! $editValue->slug !!}">Kepoin...</a>

@@ -1,11 +1,11 @@
 @extends('layouts.layout')
 
 @section('title')
-Sharing's Doank's 
+Showing Posts
 @endsection
 
 @section('selected-create')
-cap
+active
 @endsection
 
 @section('css-and-js')

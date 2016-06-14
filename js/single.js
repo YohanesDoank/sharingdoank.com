@@ -3,10 +3,10 @@ jQuery(document).ready(function($) {
 		var typePost = window.location.href.slice(window.location.href.indexOf('com/') + 4);
 		var cut = typePost.substr(0, 3);
 		if (cut == "art"){
-			$('#art').attr('class', 'cap');
+			$('#art').attr('class', 'active');
 		}
 		else{
-			$('#tut').attr('class', 'cap');
+			$('#tut').attr('class', 'active');
 		}
 		var arrayVarImg = [100];
 

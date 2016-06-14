@@ -1,11 +1,11 @@
 @extends('layouts.layout')
 
 @section('title')
-Articles Sharing's Doank's 
+Secret!! Showing Posts
 @endsection
 
 @section('selected-show')
-cap
+active
 @endsection
 
 @section('css-and-js')
@@ -72,6 +72,7 @@ cap
         </div>
     </div>
 </div>
+
 @endsection
 
 @section('content')

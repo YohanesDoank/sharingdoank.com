@@ -5,7 +5,7 @@ Contact Sharing's Doank's
 @endsection
 
 @section('selected-contact')
-cap
+active
 @endsection
 
 @section('content')

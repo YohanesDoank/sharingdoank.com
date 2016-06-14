@@ -5,7 +5,7 @@ Articles Sharing's Doank's
 @endsection
 
 @section('selected-articles')
-cap
+active
 @endsection
 
 @section('content')
