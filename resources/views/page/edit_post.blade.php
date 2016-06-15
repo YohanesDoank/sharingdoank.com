@@ -75,7 +75,7 @@ cap
 		                		<?php 
 		                			if ($jenis == "artikel" ) {
 		                		?>
-		                		<label><input type="radio" name="etype2" value="coding" <?php if ($editValue->SubKategori == "coding") 
+		                		<label><input type="radio" name="etype2" value="coding-art" <?php if ($editValue->SubKategori == "coding") 
 		                		echo 'checked="true"';
 		                		 ?>> Coding </label>
 		        				<label style="margin-left:10px;"><input type="radio" name="etype2" value="berita-hot" <?php if ($editValue->SubKategori == "berita-hot") 
@@ -92,10 +92,10 @@ cap
 		                				// 	echo "ada -";
 		                				// }
 		                		?>
-		                			<label><input type="radio" name="etype2" value="coding" 
+		                			<label><input type="radio" name="etype2" value="coding-tut" 
 		                				<?php if (substr($editValue->SubKategori, 0, 6) == "coding") {
 					                		echo 'checked="true"'; 
-					                		$finalSub = "coding";
+					                		$finalSub = "coding-tut";
 					                		}
 		                		 		?>
 		                		 	> Coding </label>
@@ -122,19 +122,19 @@ cap
 		                		if ($jenis == "artikel") {
 		                			echo "Jenis Artikel "; echo ucfirst($finalSub);} 
 		                		else{
-		                			echo "Jenis Tutorial "; echo ucfirst($finalSub);} 
+		                			echo "Jenis Tutorial "; if($finalSub == "coding-tut")echo "Coding";} 
 	                		 ?>
 	                	</label>
 	            		 <div class="col-sm-10" id="isi-sub-kategori2" >
 		                		<?php 
-		                			if ($finalSub == "coding") {
+		                			if ($finalSub == "coding-tut") {
 		                		?>
 		                		<label><input type="radio" name="etype3" value="coding-php" <?php if ($editValue->SubKategori == "coding-php") {
 		                			echo 'checked="true"';
 		                		} ?>> PHP </label>
-                        <label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-dot-net" <?php if ($editValue->SubKategori == "coding-dot-net") {
+                        <label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-vb" <?php if ($editValue->SubKategori == "coding-vb") {
 		                			echo 'checked="true"';
-		                		} ?>> .NET </label>
+		                		} ?>> VB </label>
                         <label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-java-desktop" <?php if ($editValue->SubKategori == "coding-java-desktop") {
 		                			echo 'checked="true"';
 		                		} ?>>Java Desktop </label>

@@ -161,13 +161,6 @@ class PostController extends Controller
     }
 
 
-    // to show posting 
-
-
-    public function show_detail_post($kategori, $slug){
-        $artikel = Artikel::where("slug","=",$slug)->where("kategori", "=", $kategori)->get();
-        return view('page.single',compact('artikel'));
-    }
 
     // this function for genereate image from summernote editor
     private function generateImage($html){

@@ -68,7 +68,7 @@ $(document).ready(function(){
                     finalSub = "true";
                     $('#sub-kategori2 label').html("Jenis Tutorial Coding");
                     $('#isi-sub-kategori2').append('<label><input type="radio" name="etype3" value="coding-php"> PHP </label>' + 
-                        '<label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-dot-net"> .NET </label>' +  
+                        '<label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-vb"> VB </label>' +  
                         '<label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-java-desktop">Java Desktop </label>' +  
                         '<label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-java-mobile">Java Mobile </label>');   
                 }

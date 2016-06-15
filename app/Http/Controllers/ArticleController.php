@@ -37,6 +37,17 @@ class ArticleController extends Controller
         // return $message;
     }
 
+    // to show posting 
+    public function show_detail_post($kategori, $SubKategori, $slug){
+        $artikel = Artikel::where("slug","=",$slug)->where("kategori", "=", $kategori)->where("SubKategori", "=", $SubKategori)->get();
+        return view('page.single',compact('artikel'));
+    }
+
+    public function show_detail_post2($kategori, $SubKategori1, $SubKategori2, $slug){
+        $artikel = Artikel::where("slug","=",$slug)->where("kategori", "=", $kategori)->where("SubKategori", "like",'%'.$SubKategori2.'%')->get();
+        return view('page.single',compact('artikel'));  
+    }
+
 
 }
 

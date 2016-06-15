@@ -23,13 +23,14 @@ cap1
 			<div class="title">
 			@foreach ($message as $editValue)
 				<div class="some-title">
-					<h3><a href="{!! $editValue->kategori !!}/{!! $editValue->slug !!}">{!! $editValue->title !!}</a></h3>
+					<h3><a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}">{!! $editValue->title !!}</a></h3>
 				</div>
 				<div class="john">
 					<p><a href="#">
 					<?php 
 						if($editValue->penginput != "") {
 							echo $editValue->penginput;
+
 						}else{
 							echo "Anonimuz";
 						}
@@ -42,24 +43,24 @@ cap1
 					<?php  
 						if ($editValue->path != "") {
 					?>
-							<a href="{!! $editValue->kategori !!}/{!! $editValue->slug !!}"><img width="100" src="{!! $editValue->path !!}" alt=" " /></a>
+							<a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}"><img width="100" src="{!! $editValue->path !!}" alt=" " /></a>
 					<?php 
 						}
 						else{
 					?>
-							<a href="{!! $editValue->kategori !!}/{!! $editValue->slug !!}"><img width="100" src="{!! asset('images/no-image.jpg') !!}" alt=" " /></a>
+							<a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}"><img width="100" src="{!! asset('images/no-image.jpg') !!}" alt=" " /></a>
 					<?php
 						}
 					?>
 					</center>
-					<p class="vel"><a href="{!! $editValue->kategori !!}/{!! $editValue->slug !!}">
+					<p class="vel"><a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}">
 						{!!str_limit(strip_tags($editValue->content), 150 , " ........................")!!}
 					</a></p>
 					<p class="Sed">
 					</p> 
 				</div>
 				<div class="read">
-					<a href="{!! $editValue->kategori !!}/{!! $editValue->slug !!}">Kepoin...</a>
+					<a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}">Kepoin...</a>
 				</div>
 				<div class="border">
 					<p></p>

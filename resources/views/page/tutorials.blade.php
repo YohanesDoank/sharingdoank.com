@@ -48,7 +48,7 @@ active
 			<div class="panel panel-info" style="height: 500px;">
 				<div class="panel-heading">
 					<h3 class="panel-title">
-						<a class="url-tutorial" href="{!! $editValue->kategori !!}/{!! $editValue->slug !!}">{!! $editValue->title !!}</a>
+						<a class="url-tutorial" href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}">{!! $editValue->title !!}</a>
 					</h3>
 				</div>
 				<div class="panel-body">
@@ -57,14 +57,14 @@ active
 						if ($editValue->path != "") {
 					?>
 						<div class="tilte-grid2">
-							<a class="url-tutorial" href="{!! $editValue->kategori !!}/{!! $editValue->slug !!}"><img width="330" height="281" src="{!! $editValue->path !!}" alt=" " /></a>
+							<a class="url-tutorial" href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}"><img width="330" height="281" src="{!! $editValue->path !!}" alt=" " /></a>
 						</div>
 					<?php 
 						}
 						else{
 					?>
 						<div class="tilte-grid2">
-							<a class="url-tutorial" href="{!! $editValue->kategori !!}/{!! $editValue->slug !!}"><img width="330" height="281" src="no-image" alt=" " /></a>
+							<a class="url-tutorial" href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}"><img width="330" height="281" src="no-image" alt=" " /></a>
 						</div>
 					<?php
 						}
@@ -73,7 +73,7 @@ active
 					<iframe src="https://player.vimeo.com/video/40672852?color=ffffff&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> -->
 					<br>
 					<p>{!!str_limit(strip_tags($editValue->content), 200 , " ........................")!!} </p>
-					<a class="url-tutorial" href="{!! $editValue->kategori !!}/{!! $editValue->slug !!}" style="padding-top: 10px;">
+					<a class="url-tutorial" href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}" style="padding-top: 10px;">
 					<strong><u><i>Baca Lebih Lanjut....</i></u>
 					</strong></a>
 				</div>

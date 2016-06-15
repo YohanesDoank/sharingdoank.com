@@ -10,6 +10,8 @@ $(document).ready(function(){
     var finalSub;
     var cekFinalSub = $('input[name="etype3"]:checked').val();
     var loading = $.loading();
+
+    
     $('#ajaxLoading img').each(function () {
           var curSrc = $(this).attr('src');
           // alert(curSrc.length);
@@ -53,10 +55,10 @@ $(document).ready(function(){
             // alert("artikel");
 
             finalSub = "false";
-            cekFinalSub = "";
+            cekFinalSub = null;
             $('#sub-kategori label').html("Jenis Artikel");
             $('#isi-sub-kategori').append('' +
-                '<label><input type="radio" name="etype2" value="coding"> Coding </label>' + 
+                '<label><input type="radio" name="etype2" value="coding-art"> Coding </label>' + 
                 '<label style="margin-left:10px;"><input type="radio" name="etype2" value="berita-hot"> Berita Hot </label>' +  
                 '<label style="margin-left:10px;"><input type="radio" name="etype2" value="pengetahuan-umum"> Pengetahuan Umum </label>');
 
@@ -66,7 +68,7 @@ $(document).ready(function(){
             // alert("tutorial");
             $('#sub-kategori label').html("Jenis Tutorial");
             $('#isi-sub-kategori').append('' + 
-                '<label><input type="radio" name="etype2" value="coding"> Coding </label>' + 
+                '<label><input type="radio" name="etype2" value="coding-tut"> Coding </label>' + 
                 '<label style="margin-left:10px;"><input type="radio" name="etype2" value="sulap"> Sulap </label>' +  
                 '<label style="margin-left:10px;"><input type="radio" name="etype2" value="game"> Game </label>');
 
@@ -77,11 +79,11 @@ $(document).ready(function(){
                 var kategori2 = $('input[name="etype2"]:checked').val();     
                 $('#sub-kategori2 label').html("");
                 $('#isi-sub-kategori2').html("");
-                if (kategori2 == "coding") {
+                if (kategori2 == "coding-tut") {
                     finalSub = "true";
                     $('#sub-kategori2 label').html("Jenis Tutorial Coding");
                     $('#isi-sub-kategori2').append('<label><input type="radio" name="etype3" value="coding-php"> PHP </label>' + 
-                        '<label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-dot-net"> .NET </label>' +  
+                        '<label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-vb"> VB </label>' +  
                         '<label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-java-desktop">Java Desktop </label>' +  
                         '<label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-java-mobile">Java Mobile </label>');   
                 }
@@ -95,7 +97,7 @@ $(document).ready(function(){
                 }
                 else{
                     finalSub = "false";
-                    cekFinalSub = "";
+                    cekFinalSub = null;
                 }
                 $('#sub-kategori2').show();
             });
@@ -105,15 +107,14 @@ $(document).ready(function(){
 
 
             $("input[name='etype2']").change(function(){
-                // alert('x');
                 var kategori2 = $('input[name="etype2"]:checked').val();     
                 $('#sub-kategori2 label').html("");
                 $('#isi-sub-kategori2').html("");
-                if (kategori2 == "coding") {
+                if (kategori2 == "coding-tut") {
                     finalSub = "true";
                     $('#sub-kategori2 label').html("Jenis Tutorial Coding");
                     $('#isi-sub-kategori2').append('<label><input type="radio" name="etype3" value="coding-php"> PHP </label>' + 
-                        '<label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-dot-net"> .NET </label>' +  
+                        '<label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-vb"> VB </label>' +  
                         '<label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-java-desktop">Java Desktop </label>' +  
                         '<label style="margin-left:10px;"><input type="radio" name="etype3" value="coding-java-mobile">Java Mobile </label>');   
                 }
@@ -127,7 +128,7 @@ $(document).ready(function(){
                 }
                 else{
                     finalSub = "false";
-                    cekFinalSub = "";
+                    cekFinalSub = null;
                 }
                 $('#sub-kategori2').show();
             });
@@ -218,14 +219,19 @@ $(document).ready(function(){
             var penginput = $('input[name="penginput"]').val();
 
             alert(subKategori);
-            if (finalSub == "true" ){ 
+            if (subKategori == "coding-art" ){ 
+                subKategori = "coding";
+                alert(subKategori);   
+            }
+            if (finalSub == "true" ){
                 subKategori = anakSubKategori;
                 alert(subKategori);
             }
-            else if(cekFinalSub != ""){
+            else if(cekFinalSub != null){
                 subKategori = anakSubKategori;
                 alert(subKategori);   
             }
+            
 
             if($('#inputpicture').val() == ""){
                 requestUploadArtikel(titleArtikel, isiArtikel, kategori, subKategori, null);
