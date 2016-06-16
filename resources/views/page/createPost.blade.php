@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('title')
-Showing Posts
+Create Posts
 @endsection
 
 @section('selected-create')

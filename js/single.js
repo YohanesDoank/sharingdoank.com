@@ -28,15 +28,23 @@ jQuery(document).ready(function($) {
 			else if(count == 4) {
 				current = "../../../" + current;
 			}
+			else if(count == 5) {
+				current = "../../../../" + current;
+			}
 			$(this).attr('src', current);
 		});
 		var counter = 0;
 		$('.img-responsive').each(function () {
 	      var curSrc = $(this).attr('src');
 	      // alert(curSrc.length);
-	      arrayVarImg[counter] = curSrc.substr(3, curSrc.length - 3);
-	      $(this).attr('src', arrayVarImg[counter]);
-	      counter += 1;
+	      if (count == 4) {
+	      	$(this).attr('src', "../" + curSrc);
+	      }
+	      else if (count == 5) {
+	      	$(this).attr('src', "../../" + curSrc);
+	      }
+	      // arrayVarImg[counter] = curSrc.substr(3, curSrc.length - 3);
+	      // counter += 1;
     	});
 
 });

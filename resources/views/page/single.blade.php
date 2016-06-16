@@ -42,62 +42,44 @@ Single Sharing's Doank's
 				@endforeach
 				<div class="related-posts">
 					<h3>Related Posts</h3>
+					<?php $count = 1; $nextCount = 0; $arrayP;?>
+					
 					<div class="related-posts-grids">
-						<div class="related-posts-grid">
-							<a href="#"><img src="{{ asset('images/5.jpg') }}" alt=" " /></a>
-							<h4><a href="#">Maecenas pulvinar</a></h4>
-							<p>Nunc pulvinar augue non felis dictum ultricies. Donec lacinia, 
-								enim sit amet volutpat sodales, lorem velit fringilla metus, et
-								semper metus sapien non odio. Nulla facilisi.</p>
-						</div>
-						<div class="related-posts-grid">
-							<a href="#"><img src="{{ asset('images/7.jpg') }}" alt=" " /></a>
-							<h4><a href="#">Maecenas pulvinar</a></h4>
-							<p>Nunc pulvinar augue non felis dictum ultricies. Donec lacinia, 
-								enim sit amet volutpat sodales, lorem velit fringilla metus, et
-								semper metus sapien non odio. Nulla facilisi.</p>
-						</div>
-						<div class="related-posts-grid">
-							<a href="#"><img src="{{ asset('images/6.jpg') }}" alt=" " /></a>
-							<h4><a href="#">Maecenas pulvinar</a></h4>
-							<p>Nunc pulvinar augue non felis dictum ultricies. Donec lacinia, 
-								enim sit amet volutpat sodales, lorem velit fringilla metus, et
-								semper metus sapien non odio. Nulla facilisi.</p>
-						</div>
-						<div class="related-posts-grid">
-							<a href="#"><img src="{{ asset('images/8.jpg') }}" alt=" " /></a>
-							<h4><a href="#">Maecenas pulvinar</a></h4>
-							<p>Nunc pulvinar augue non felis dictum ultricies. Donec lacinia, 
-								enim sit amet volutpat sodales, lorem velit fringilla metus, et
-								semper metus sapien non odio. Nulla facilisi.</p>
-						</div>
+						@foreach ($artikelRelated as $relatedPost)
+							<?php 
+								$path = $relatedPost->kategori .'/'. str_replace('-', '/', $relatedPost->SubKategori)  .'/'.  $relatedPost->slug;  
+							?>
+							@if($count != 5)
+							<div class="related-posts-grid">
+								<a href="{{ asset($path) }}"><img src="{{ asset($relatedPost->path) }}" alt=" " /></a>
+								<h4><a href="{{ asset($path) }}">{!! str_limit(strip_tags($relatedPost->title), 40 , " ........................") !!}</a></h4>
+								<p>{!! str_limit(strip_tags($relatedPost->content), 150 , " ........................") !!}</p>
+							</div>
+							<?php $count += 1 ?>
+							@else
+								<?php 
+									$newPost = '<div class="related-posts-grid">
+												<a href="'.asset($path).'"><img src="'.asset($relatedPost->path).'" alt=" " /></a>
+												<h4><a href="'.asset($path).'">'.str_limit(strip_tags($relatedPost->title), 40 , " ........................").'</a></h4>
+												<p>'.str_limit(strip_tags($relatedPost->content), 150 , " ........................").'</p>
+												</div>' ;
+
+									$arrayP[$nextCount] = $newPost;
+									$nextCount += 1;
+								?>
+							@endif
+						@endforeach	
 						<div class="clearfix"> </div>
 					</div>
 					<div class="related-posts-grids">
-						<div class="related-posts-grid">
-							<a href="#"><img src="{{ asset('images/6.jpg') }}" alt=" " /></a>
-							<h4><a href="#">Maecenas pulvinar</a></h4>
-							<p>Nunc pulvinar augue non felis dictum ultricies. Donec lacinia, 
-								enim sit amet volutpat sodale.</p>
-						</div>
-						<div class="related-posts-grid">
-							<a href="#"><img src="{{ asset('images/8.jpg') }}" alt=" " /></a>
-							<h4><a href="#">Maecenas pulvinar</a></h4>
-							<p>Nunc pulvinar augue non felis dictum ultricies. Donec lacinia, 
-								enim sit amet volutpat sodales.</p>
-						</div>
-						<div class="related-posts-grid">
-							<a href="#"><img src="{{ asset('images/5.jpg') }}" alt=" " /></a>
-							<h4><a href="#">Maecenas pulvinar</a></h4>
-							<p>Nunc pulvinar augue non felis dictum ultricies. Donec lacinia, 
-								enim sit amet volutpat sodale.</p>
-						</div>
-						<div class="related-posts-grid">
-							<a href="#"><img src="{{ asset('images/7.jpg') }}" alt=" " /></a>
-							<h4><a href="#">Maecenas pulvinar</a></h4>
-							<p>Nunc pulvinar augue non felis dictum ultricies. Donec lacinia, 
-								enim sit amet volutpat sodale.</p>
-						</div>
+						<?php  
+							$i = 0;
+							while ($nextCount != 0) {
+								echo $arrayP[$i];
+								$i += 1;
+								$nextCount -= 1;
+							}
+						?>
 						<div class="clearfix"> </div>
 					</div>
 				</div>
@@ -105,14 +87,24 @@ Single Sharing's Doank's
 			<div class="categories">
 				<div class="categ">
 					<div class="cat">
-						<h3>Categories</h3>
+						<h3>Jenis Artikel</h3>
 						<ul>
-							<li><a href="#">Lorem ipsum dolor sit amet</a></li>
-							<li><a href="#">Consectetur adipiscing elit</a></li>
-							<li><a href="#">Etiam aliquet convallis enim ut</a></li>
-							<li><a href="#">Donec at pretium dui</a></li>
-							<li><a href="#">Nulla sed massa sagittis venenatis</a></li>
-							<li><a href="#">Praesent nec tortor nec massa</a></li>
+							<li><a href="{{ asset('articles/search?kata_kunci=&select-subKateg=coding-art') }}">Macam-macam bacaan Ngoding</a></li>
+							<li><a href="{{ asset('articles/search?kata_kunci=&select-subKateg=coding-art') }}">Berita Hot terkini</a></li>
+							<li><a href="{{ asset('articles/search?kata_kunci=&select-subKateg=coding-art') }}">Pengetahuan umum yang unik</a></li> 
+					</div>
+					<div class="cat">
+						<h3>Jenis Tutorial</h3>
+						<ul>
+							<li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=game-mobile') }}">Game Mobile</a></li>
+							<li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=game-pc') }}">Game PC</a></li>
+							<li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=game-ps') }}">Game PLayStation</a></li>
+							<li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=game-jadul') }}">Game Jaman Dulu</a></li>
+							<li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=sulap') }}">Sulap</a></li>
+							<li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=coding-php') }}">Ngoding PHP</a></li>
+							<li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=coding-java-desktop') }}">Ngoding Java dengan Netbeans</a></li>
+							<li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=coding-java-mobile') }}">Ngoding Android dengan Java</a></li>
+							<li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=coding-vb') }}">Ngoding VB</a></li>
 						</ul>
 					</div>
 					<div class="recent-com">

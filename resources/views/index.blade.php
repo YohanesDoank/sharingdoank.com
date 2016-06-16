@@ -23,7 +23,7 @@ cap1
 			<div class="title">
 			@foreach ($message as $editValue)
 				<div class="some-title">
-					<h3><a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}">{!! $editValue->title !!}</a></h3>
+					<h3><a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}">{!! $editValue->slug !!}</a></h3>
 				</div>
 				<div class="john">
 					<p><a href="#">
@@ -43,17 +43,17 @@ cap1
 					<?php  
 						if ($editValue->path != "") {
 					?>
-							<a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}"><img width="100" src="{!! $editValue->path !!}" alt=" " /></a>
+							<a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{{ $editValue->slug }}"><img width="100" src="{!! $editValue->path !!}" alt=" " /></a>
 					<?php 
 						}
 						else{
 					?>
-							<a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}"><img width="100" src="{!! asset('images/no-image.jpg') !!}" alt=" " /></a>
+							<a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{{ $editValue->slug }}"><img width="100" src="{!! asset('images/no-image.jpg') !!}" alt=" " /></a>
 					<?php
 						}
 					?>
 					</center>
-					<p class="vel"><a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}">
+					<p class="vel"><a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{{ $editValue->slug }}">
 						{!!str_limit(strip_tags($editValue->content), 150 , " ........................")!!}
 					</a></p>
 					<p class="Sed">
@@ -71,14 +71,24 @@ cap1
 			<div class="categories">
 				<div class="categ">
 					<div class="cat">
-						<h3>Categories</h3>
+						<h3>Jenis Artikel</h3>
 						<ul>
-							<li><a href="single">Lorem ipsum dolor sit amet</a></li>
-							<li><a href="single">Consectetur adipiscing elit</a></li>
-							<li><a href="single">Etiam aliquet convallis enim ut</a></li>
-							<li><a href="single">Donec at pretium dui</a></li>
-							<li><a href="single">Nulla sed massa sagittis venenatis</a></li>
-							<li><a href="single">Praesent nec tortor nec massa</a></li>
+							<li><a href="articles/search?kata_kunci=&select-subKateg=coding-art">Macam-macam bacaan Ngoding</a></li>
+							<li><a href="articles/search?kata_kunci=&select-subKateg=coding-art">Berita Hot terkini</a></li>
+							<li><a href="articles/search?kata_kunci=&select-subKateg=coding-art">Pengetahuan umum yang unik</a></li> 
+					</div>
+					<div class="cat">
+						<h3>Jenis Tutorial</h3>
+						<ul>
+							<li><a href="tutorials/search?kata_kunci=&select-subKateg=game-mobile">Game Mobile</a></li>
+							<li><a href="tutorials/search?kata_kunci=&select-subKateg=game-pc">Game PC</a></li>
+							<li><a href="tutorials/search?kata_kunci=&select-subKateg=game-ps">Game PLayStation</a></li>
+							<li><a href="tutorials/search?kata_kunci=&select-subKateg=game-jadul">Game Jaman Dulu</a></li>
+							<li><a href="tutorials/search?kata_kunci=&select-subKateg=sulap">Sulap</a></li>
+							<li><a href="tutorials/search?kata_kunci=&select-subKateg=coding-php">Ngoding PHP</a></li>
+							<li><a href="tutorials/search?kata_kunci=&select-subKateg=coding-java-desktop">Ngoding Java dengan Netbeans</a></li>
+							<li><a href="tutorials/search?kata_kunci=&select-subKateg=coding-java-mobile">Ngoding Android dengan Java</a></li>
+							<li><a href="tutorials/search?kata_kunci=&select-subKateg=coding-vb">Ngoding VB</a></li>
 						</ul>
 					</div>
 					<div class="recent-com">

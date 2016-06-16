@@ -44,8 +44,9 @@ Route::group(['middleware' => 'web'], function () {
 	Route::post('showPost/delete', 'PostController@delete_post');
 	
 	// route untuk menampilkan posting 
-	Route::get('{kategori}/{SubKategori}/{slug}', 'ArticleController@show_detail_post');
+	Route::get('{kategori}/{SubKategori1}/{slug}', 'ArticleController@show_detail_post');
 	Route::get('{kategori}/{SubKategori1}/{SubKategori2}/{slug}', 'ArticleController@show_detail_post2');
+	Route::get('{kategori}/{SubKategori1}/{SubKategori2}/{SubKategori3}/{slug}', 'ArticleController@show_detail_post3');
 	//Route::auth();
 	//Route::get('/home', 'HomeController@index');
 	

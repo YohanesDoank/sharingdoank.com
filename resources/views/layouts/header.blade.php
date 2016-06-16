@@ -9,12 +9,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="./" class="navbar-brand"><strong>S</strong>haring<strong>D</strong>oank</a>
+      <a href="{{ asset('/') }}" class="navbar-brand"><strong>S</strong>haring<strong>D</strong>oank</a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
         <li class="@yield('selected-index')">
-          <a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"> <strong>Home</strong></span></a>
+          <a href="{{ asset('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"> <strong>Home</strong></span></a>
         </li>
 			<li id="art" class="dropdown @yield('selected-articles')">
 		        <a href="{{ url('articles') }}" class="dropdown-toggle">
@@ -36,17 +36,26 @@
 		    <li>
 		        <a href="#">Coding<i class="icon-arrow-right"></i></a>
 		        <ul class="dropdown-menu sub-menu">
-		            <li><a href="#">PHP</a></li>
-		            <li><a href="#">.NET</a></li>
-		            <li><a href="#">Java Desktop</a></li>
-		            <li><a href="#">Java Mobile</a></li>
+		            <li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=coding-php') }}">PHP</a></li>
+		            <li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=coding-vb') }}">VB</a></li>
+		            <li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=coding-java-desktop') }}">Java Desktop</a></li>
+		            <li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=coding-java-mobile') }}">Java Mobile</a></li>
 		            <!-- <li class="divider"></li>
 		            <li><a href="#">Separated link</a></li>
 		            <li><a href="#">One more separated link</a></li> -->
 		        </ul>
 		    </li>
-		    <li><a href="#">Gaming</a></li>
-		    <li><a href="#">Tutorial 1</a></li>
+		    <li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=sulap') }}">Sulap</a></li>
+		    <li>
+		    	<a href="#">Game
+		        <ul class="dropdown-menu sub-menu">
+					<li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=game-mobile') }}">Game Mobile</a></li>
+					<li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=game-pc') }}">Game PC</a></li>
+					<li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=game-ps') }}">Game PLayStation</a></li>
+					<li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=game-jadul') }}">Game Jaman Dulu</a></li>
+		        </ul>
+		    	</a>
+		    </li>
 		    <li class="divider"></li>
 		    <li><a href="#">Tutorial n</a></li>
 		  </ul>
