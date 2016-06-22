@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layout_spesific')
 
 @section('title')
 Single Sharing's Doank's 

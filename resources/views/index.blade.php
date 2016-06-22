@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layout_spesific')
 
 @section('title')
 Sharing's Doank's 
@@ -17,7 +17,7 @@ cap1
 @endsection
 
 @section('content')
-<div class="content tut">
+<div class="content tut" style="min-height: 1200px;">
 	<div class="container">
 		<div class="content-text facilis">	
 			<div class="title">
@@ -112,9 +112,8 @@ cap1
 			</div>
 			<div class="clearfix"> </div>
 			<div style="margin-left:30%; margin-bottom: 10px;">{!! $message->render() !!}</div>
-
+			@include('layouts.footer')
 		</div>
-
 	</div>
 	</div>
 @endsection

@@ -1,4 +1,4 @@
-	@extends('layouts.layout')
+@extends('layouts.layout_spesific')
 
 @section('title')
 Tutorials Sharing's Doank's 
@@ -173,6 +173,7 @@ active
 					}
 				 ?>
 				<div style="margin-left:40%;">{!! $message->appends(Input::only('kata_kunci', 'select-subKateg'))->links() !!}</div>
+				@include('layouts.footer')
 		</div>
 	</div>
 	</div>

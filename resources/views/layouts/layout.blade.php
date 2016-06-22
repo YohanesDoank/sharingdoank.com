@@ -43,7 +43,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 	
 <body>
-<!-- header -->
+
+	<!-- header -->
 @include('layouts.header')
 <!-- header -->
 
@@ -52,12 +53,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //content -->
 
 <!-- footer -->
-@stack('scripts')
 @include('layouts.footer')	
 <!-- //footer -->
-
-
     <!-- Include all compiled plugins (below), or include individual files as needed -->
+@stack('scripts')
+
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>
 </html>
