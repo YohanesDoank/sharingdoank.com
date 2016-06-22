@@ -8,172 +8,191 @@ Articles Sharing's Doank's
 active
 @endsection
 
+@section('css-and-js')
+<link rel="stylesheet" href="{{ asset('css/swipebox.css') }}">
+<script src="{{ asset('js/jquery.swipebox.min.js') }}"></script> 
+<script type="text/javascript" src="{{ asset('js/jquery.mixitup.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/articles.js')}}"></script>
+@endsection
+
 @section('content')
-<div class="articles">
+<div class="content tut">
 	<div class="container">
-		<div class="article">
+		<div class="content-text facilis">
+			<div class="content-info">
+				<h2>Selamat datang ! di Artikel :V</h2>
+				<p>Ini adalah Kumpulan artikel...</p>
+				<p>Silahkan cari artikel yang anda inginkan :) berdasarkan judul dan kategori :)</p>
+			</div>
+		   <div class="form-group has-feedback">
+		 		<div class="table-responsive">
+		 			<table class="table table-hover">
+		 				<thead>
+		 					<tr>
+		 						<th colspan="2">Cari Judul Artikel - <i><small>opsional</small></i></th>
+		 					</tr>
+		 				</thead>
+		 				<tbody>
+		 					<tr>
+		 						<td width="95%">
+		 							{!! Form::open(array('url' => 'artikel/search', 'method' => 'get')) !!}
+		 							@if (isset($kata))
+		 								{!! Form::text('kata_kunci',$kata, ['placeholder' => 'Cari Judul Artikel :)', 'class' => 'form-control']) !!}	 
+		 							@else
+		 								{!! Form::text('kata_kunci','', ['placeholder' => 'Cari Judul Artikel :)', 'class' => 'form-control']) !!}	 
+		 							@endif
+		 							
+		 						</td>
+		 						<td rowspan="2">
+		 							
+		 							<button type="submit" class="btn btn-primary btn-lg text-center">
+		 								<span class="glyphicon glyphicon-search" aria-hidden="true" style="; width: 70px; font-size: 3.2em"></span><br>
+		 								<i><u>Cari</u></i>
+		 							</button>
+		 						</td>
+		 					</tr>
+		 					<tr>
+		 						<td>
+		 						<label for="title" class="control-label">Kategori Post - <i><small>required</small></i>
+				 					@if (Session::has('errors'))
+				 						<span class="alert-danger"> -<i> {{ Session::get('errors')}} </i></span>
+				 					@endif
+		 						</label>
+		 						@if(isset($subKateg))
+		 								{!! Form::select('select-subKateg', [
+		 									'' => '---',
+				 							'coding' => 'Coding',
+				 							'berita-hot' => 'Berita Hot',
+				 							'pengetahuan-umum' => 'Pengetahuan Umum'], 
+				 								$subKateg,
+				 							[
+				 								'class' => 'form-control',
+				 								'id' => 'input'
+				 							]
+				 						) !!}
+		 							@else
+			 							{!! Form::select('select-subKateg', [
+			 							'' => '---',
+				 							'coding' => 'Coding',
+				 							'berita-hot' => 'Berita Hot',
+				 							'pengetahuan-umum' => 'Pengetahuan Umum'], 
+			 								'null'
+			 							,
+			 							[
+			 								'class' => 'form-control',
+			 								'id' => 'input'
+			 							]
+			 						) !!}
+		 							@endif
+		 						</td>
+		 					</tr>
+
+		 							{!! Form::close() !!}
+		 				</tbody>
+		 			</table>
+		 		</div>
+		 	</div>
 			<div class="article-left">
-				<h3>Articles Of Note.ALL ARTICLES ></h3>
+				<h3>Artikel Baru ></h3>
 				<div class="article-grids">
+				<?php $countClearFix2 = 1; ?>
+				@foreach($message as $artikel)
+				<?php 
+					$path = $artikel->kategori .'/'. str_replace('-', '/', $artikel->SubKategori)  .'/'.  $artikel->slug;  
+				?>
+
+					<?php 
+						if ($countClearFix2 <= 4){ 
+					?>
 					<div class="article-grid">
 						<div class="article-grid-left">
-							<a href="single.html"><img src="images/5.jpg" alt=" "  /></a>
+							<a href="{{ asset($path) }}">
+								<?php if ($artikel->path != "") { ?>
+									<img src="{{ asset($artikel->path) }}" alt=" "  />
+								<?php } else { ?>
+									<img src="{{ asset('images/no-image.jpg') }}" alt=" " />
+								<?php } ?>
+							</a>
 						</div>
 						<div class="article-grid-right">
-							<h4><a href="single.html">Lorem ipsum dolor sit</a></h4>
-							<p>Pellentesque venenatis lorem vitae nisl scelerisque dignissim.
-								Sed tristique finibus leo, et id.<span>March 28.</span></p>
+							<h4><a href="{{ asset($path) }}">{{ $artikel->title }}</a></h4>
+							<p>{!! str_limit(strip_tags($artikel->content), 50 , " ........................") !!}
+								<span>{{ $artikel->created_at }}</span>
+							</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
-					<div class="article-grid">
+					<?php  
+							$countClearFix2 += 1; 
+						} 
+						else{
+					?>
+					<div class="article-grid" style="margin-top: 20px;">
 						<div class="article-grid-left">
-							<a href="single.html"><img src="images/7.jpg" alt=" "  /></a>
+							<a href="{{ asset($path) }}">
+								<?php if ($artikel->path != "") { ?>
+									<img src="{{ asset($artikel->path) }}" alt=" "  />
+								<?php } else { ?>
+									<img src="{{ asset('images/no-image.jpg') }}" alt=" " />
+								<?php } ?>
+							</a>
 						</div>
 						<div class="article-grid-right">
-							<h4><a href="single.html">Lorem ipsum dolor sit</a></h4>
-							<p>Pellentesque venenatis lorem vitae nisl scelerisque dignissim.
-								Sed tristique finibus leo, et id.<span>March 28.</span></p>
+							<h4><a href="{{ asset($path) }}">{{ $artikel->title }}</a></h4>
+							<p>{!! str_limit(strip_tags($artikel->content), 50 , " ........................") !!}
+								<span>{{ $artikel->created_at }}</span>
+							</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
-					<div class="article-grid">
-						<div class="article-grid-left">
-							<a href="single.html"><img src="images/6.jpg" alt=" "  /></a>
-						</div>
-						<div class="article-grid-right">
-							<h4><a href="single.html">Lorem ipsum dolor sit</a></h4>
-							<p>Pellentesque venenatis lorem vitae nisl scelerisque dignissim.
-								Sed tristique finibus leo, et id.<span>March 28.</span></p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="article-grid">
-						<div class="article-grid-left">
-							<a href="single.html"><img src="images/8.jpg" alt=" "  /></a>
-						</div>
-						<div class="article-grid-right">
-							<h4><a href="single.html">Lorem ipsum dolor sit</a></h4>
-							<p>Pellentesque venenatis lorem vitae nisl scelerisque dignissim.
-								Sed tristique finibus leo, et id.<span>March 28.</span></p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
+					<?php } ?>
+				@endforeach
 					<div class="clearfix"> </div>
+					<div class="view">
+						<a href="single">Lihat donk</a>
+					</div>
 				</div>
 			</div>
 			<div class="article-right">
-				<h3>Featured Publications</h3>
+				<?php  if(!empty($subKateg)) { ?>
+				<h3><i>Pencarian Artikel </i><u><?php echo strtoupper($subKateg); ?></u></h3>
+				<?php } else {?>
+				<h3>Artikel-artikel</h3>
+				<?php } ?>
 				<div class="article-right-grids">
+				<?php $countClearFix = 1; ?>
+				@foreach($message2 as $artikel2)
+				<?php 
+					$path2 = $artikel2->kategori .'/'. str_replace('-', '/', $artikel2->SubKategori)  .'/'.  $artikel2->slug;  
+				?>
+
 					<div class="article-right-grid">
-						<a href="images/9-.jpg" class="b-link-stripe b-animate-go   swipebox"  title="">
-							<img src="images/9.jpg" alt=" " />
+						<?php if ($artikel2->path != "") { ?>
+							<a href="{{ asset($artikel2->path) }}" class="b-link-stripe b-animate-go   swipebox"  title="">
+								<img src="{{ asset($artikel2->path) }}" alt=" " />
+							</a>
+						<?php } else { ?>
+						<a href="{{ asset('images/no-image.jpg') }}" class="b-link-stripe b-animate-go   swipebox"  title="">
+							<img src="{{ asset('images/no-image.jpg') }}" alt=" " />
 						</a>
-						<h4><a href="single.html">News Articles</a></h4>
-						<p>Pellentesque venenatis lorem vitae nisl scelerisque dignissim.</p>
+						<?php } ?>
+						<h4><a href="{{ asset($path2)}}">Artikel {{ ucfirst(str_replace("-", " ", $artikel2->SubKategori)) }}</a></h4>
+						<p>{{ ucfirst($artikel2->title) }}</p>
 					</div>
-					<div class="article-right-grid">
-						<a href="images/16-.jpg" class="b-link-stripe b-animate-go   swipebox"  title="">
-							<img src="images/16.jpg" alt=" " />
-						</a>
-						<h4><a href="single.html">Business Weak</a></h4>
-						<p>Pellentesque venenatis lorem vitae nisl scelerisque dignissim.</p>
-					</div>
-					<div class="article-right-grid">
-						<a href="images/15-.jpg" class="b-link-stripe b-animate-go   swipebox"  title="">
-							<img src="images/15.jpg" alt=" " />
-						</a>
-						<h4><a href="single.html">Stewart Living</a></h4>
-						<p>Pellentesque venenatis lorem vitae nisl scelerisque dignissim.</p>
-					</div>
+					<?php 
+						if ($countClearFix == 3){ 
+					?>
+							<div class="clearfix"> </div>
+					<?php  
+							$countClearFix = 1; 
+						} 
+						else
+							$countClearFix += 1;
+					?>
+				@endforeach
 					<div class="clearfix"> </div>
-					<div class="article-right-grid">
-						<a href="images/12-.jpg" class="b-link-stripe b-animate-go   swipebox"  title="">
-							<img src="images/12.jpg" alt=" " />
-						</a>
-						<h4><a href="single.html">iPhone Life</a></h4>
-						<p>Pellentesque venenatis lorem vitae nisl scelerisque dignissim.</p>
-					</div>
-					<div class="article-right-grid">
-						<a href="images/14-.jpg" class="b-link-stripe b-animate-go   swipebox"  title="">
-							<img src="images/14.jpg" alt=" " />
-						</a>
-						<h4><a href="single.html">Books Articles</a></h4>
-						<p>Pellentesque venenatis lorem vitae nisl scelerisque dignissim.</p>
-					</div>
-					<div class="article-right-grid">
-						<a href="images/11-.jpg" class="b-link-stripe b-animate-go   swipebox"  title="">
-							<img src="images/11.jpg" alt=" " />
-						</a>
-						<h4><a href="single.html">Coins Weekly</a></h4>
-						<p>Pellentesque venenatis lorem vitae nisl scelerisque dignissim.</p>
-					</div>
-					<div class="clearfix"> </div>
-					<div class="article-right-grid">
-						<a href="images/9-.jpg" class="b-link-stripe b-animate-go   swipebox"  title="">
-							<img src="images/9.jpg" alt=" " />
-						</a>
-						<h4><a href="single.html">News Articles</a></h4>
-						<p>Pellentesque venenatis lorem vitae nisl scelerisque dignissim.</p>
-					</div>
-					<div class="article-right-grid">
-						<a href="images/16-.jpg" class="b-link-stripe b-animate-go   swipebox"  title="">
-							<img src="images/16.jpg" alt=" " />
-						</a>
-						<h4><a href="single.html">Business Weak</a></h4>
-						<p>Pellentesque venenatis lorem vitae nisl scelerisque dignissim.</p>
-					</div>
-					<div class="article-right-grid">
-						<a href="images/15-.jpg" class="b-link-stripe b-animate-go   swipebox"  title="">
-							<img src="images/15.jpg" alt=" " />
-						</a>
-						<h4><a href="single.html">Stewart Living</a></h4>
-						<p>Pellentesque venenatis lorem vitae nisl scelerisque dignissim.</p>
-					</div>
-					<div class="clearfix"> </div>
+					<div style="margin-left:40%;">{!! $message2->appends(Input::only('kata_kunci', 'select-subKateg'))->links() !!}</div>
 				</div>
-			<link rel="stylesheet" href="css/swipebox.css">
-				<script src="js/jquery.swipebox.min.js"></script> 
-					<script type="text/javascript">
-						jQuery(function($) {
-							$(".swipebox").swipebox();
-						});
-					</script>
-				<!-- Portfolio Ends Here -->
-				<script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
-					<script type="text/javascript">
-					$(function () {
-						var filterList = {
-							init: function () {
-								// MixItUp plugin
-							// http://mixitup.io
-							$('#portfoliolist').mixitup({
-								targetSelector: '.portfolio',
-								filterSelector: '.filter',
-								effects: ['fade'],
-								easing: 'snap',
-								// call the hover effect
-								onMixEnd: filterList.hoverEffect()
-							});	
-						},
-						hoverEffect: function () {
-							// Simple parallax effect
-							$('#portfoliolist .portfolio').hover(
-								function () {
-									$(this).find('.label').stop().animate({bottom: 0}, 200, 'easeOutQuad');
-									$(this).find('img').stop().animate({top: -30}, 500, 'easeOutQuad');				
-								},
-								function () {
-									$(this).find('.label').stop().animate({bottom: -40}, 200, 'easeInQuad');
-									$(this).find('img').stop().animate({top: 0}, 300, 'easeOutQuad');								
-								}		
-							);				
-						}
-					};
-					// Run the show!
-						filterList.init();
-					});	
-					</script>
 			</div>
 			<div class="clearfix"> </div>
 		</div>

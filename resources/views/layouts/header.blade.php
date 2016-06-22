@@ -17,19 +17,19 @@
           <a href="{{ asset('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"> <strong>Home</strong></span></a>
         </li>
 			<li id="art" class="dropdown @yield('selected-articles')">
-		        <a href="{{ url('articles') }}" class="dropdown-toggle">
+		        <a href="{{ url('artikel') }}" class="dropdown-toggle">
 		        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"> <strong>Artikel</strong></span>
 		        <b class="caret"></b></a>
 		        <ul class="dropdown-menu">
-		          <li><a href="#">Coding</a></li>
-		          <li><a href="#">Berita Hot</a></li>
-		          <li><a href="#">Pengetahuan Umum</a></li>
+		          <li><a href="{{ asset('artikel/search?kata_kunci=&select-subKateg=coding') }}">Coding</a></li>
+		          <li><a href="{{ asset('artikel/search?kata_kunci=&select-subKateg=berita-hot') }}">Berita Hot</a></li>
+		          <li><a href="{{ asset('artikel/search?kata_kunci=&select-subKateg=pengetahuan-umum') }}">Pengetahuan Umum</a></li>
 		        </ul>
 	      	</li>
         <li>
         </li>
         <li id="tut" class="dropdown @yield('selected-tutorials')">
-		  <a href="{{ url('tutorials') }}" class="dropdown-toggle">
+		  <a href="{{ url('tutorial') }}" class="dropdown-toggle">
 		        <span class="glyphicon glyphicon-pencil" aria-hidden="true"> <strong>Tutorial</strong></span>
 		        <b class="caret"></b></a>
 		  <ul class="dropdown-menu" id="menu1">

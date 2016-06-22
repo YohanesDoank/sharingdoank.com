@@ -3083,7 +3083,7 @@
      */
     var createImage = function (url) {
       return $.Deferred(function (deferred) {
-        var $img = $('<img class="img-responsive">');
+        var $img = $('<img class="img-responsive b-link-stripe b-animate-go   swipebox" href="" title="" style="cursor: pointer;">');
 
         $img.one('load', function () {
           $img.off('error abort');

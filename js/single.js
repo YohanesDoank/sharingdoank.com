@@ -32,6 +32,7 @@ jQuery(document).ready(function($) {
 				current = "../../../../" + current;
 			}
 			$(this).attr('src', current);
+			// $(this).attr('href', );
 		});
 		var counter = 0;
 		$('.img-responsive').each(function () {
@@ -39,10 +40,16 @@ jQuery(document).ready(function($) {
 	      // alert(curSrc.length);
 	      if (count == 4) {
 	      	$(this).attr('src', "../" + curSrc);
+	      	$(this).attr('href', "../" + curSrc);
 	      }
 	      else if (count == 5) {
 	      	$(this).attr('src', "../../" + curSrc);
+	      	$(this).attr('href', "../../" + curSrc);
 	      }
+	      else{
+	      	$(this).attr('href', curSrc);
+	      }
+
 	      // arrayVarImg[counter] = curSrc.substr(3, curSrc.length - 3);
 	      // counter += 1;
     	});

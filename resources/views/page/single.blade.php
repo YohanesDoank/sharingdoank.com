@@ -6,6 +6,11 @@ Single Sharing's Doank's
 
 @section('css-and-js')
 <script type="text/javascript" src="{{ asset('js/single.js') }}"></script>
+
+<link rel="stylesheet" href="{{ asset('css/swipebox.css') }}">
+<script src="{{ asset('js/jquery.swipebox.min.js') }}"></script> 
+<script type="text/javascript" src="{{ asset('js/jquery.mixitup.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/articles.js')}}"></script>
 @endsection
 
 @section('content')
@@ -23,12 +28,17 @@ Single Sharing's Doank's
 				<div class="clearfix"> </div>
 				<div class="tilte-grid">
 					<?php 
-						if($message->path != ""){
-							echo '<img class="gambarUtama" src="'.$message->path.'" alt=" " />';
-						}
+						if($message->path != ""){	
+					?>
+						
+							<img src="{{ asset($message->path) }}" alt=" " href="{{ asset($message->path) }}" class="b-link-stripe b-animate-go   swipebox"  title="" style="cursor: pointer;" />
+						
+					<?php }
 						else{ 
 					?>
-						<img src="{{ asset('images/no-image.jpg') }}" alt=" " />
+						<a href="{{ asset('images/no-image.jpg') }}" class="b-link-stripe b-animate-go   swipebox"  title="">
+							<img src="{{ asset('images/no-image.jpg') }}" alt=" " />
+						</a>
 					<?php
 						}
 					?>
@@ -40,8 +50,9 @@ Single Sharing's Doank's
 						{!! $message->content !!}
 					</p> 
 				@endforeach
+				<div class="clearfix"> </div>
 				<div class="related-posts">
-					<h3>Related Posts</h3>
+				<h3 id="related">Related Posts</h3>
 					<?php $count = 1; $nextCount = 0; $arrayP;?>
 					
 					<div class="related-posts-grids">
@@ -50,10 +61,24 @@ Single Sharing's Doank's
 								$path = $relatedPost->kategori .'/'. str_replace('-', '/', $relatedPost->SubKategori)  .'/'.  $relatedPost->slug;  
 							?>
 							@if($count != 5)
-							<div class="related-posts-grid">
-								<a href="{{ asset($path) }}"><img src="{{ asset($relatedPost->path) }}" alt=" " /></a>
-								<h4><a href="{{ asset($path) }}">{!! str_limit(strip_tags($relatedPost->title), 40 , " ........................") !!}</a></h4>
-								<p>{!! str_limit(strip_tags($relatedPost->content), 150 , " ........................") !!}</p>
+							<div class="related-posts-grid" id="ada">
+								<a href="{{ asset($path) }}">
+								<?php  
+									if ($relatedPost->path != "") {
+								?>
+										
+											<img src="{{ asset($relatedPost->path) }}" alt=" " />
+								<?php 
+									}
+									else{
+								?>
+										<img src="{!! asset('images/no-image.jpg') !!}" alt=" " />
+								<?php
+									}
+								?>
+								</a>
+								<h4><a href="{{ asset($path) }}">{!! str_limit(strip_tags($relatedPost->title), 40 , " ....") !!}</a></h4>
+								<p>{!! str_limit(strip_tags($relatedPost->content), 50 , " ....") !!}</p>
 							</div>
 							<?php $count += 1 ?>
 							@else
@@ -84,14 +109,14 @@ Single Sharing's Doank's
 					</div>
 				</div>
 			</div>
-			<div class="categories">
+			<div class="categories" style="background-color: black;">
 				<div class="categ">
 					<div class="cat">
 						<h3>Jenis Artikel</h3>
 						<ul>
-							<li><a href="{{ asset('articles/search?kata_kunci=&select-subKateg=coding-art') }}">Macam-macam bacaan Ngoding</a></li>
-							<li><a href="{{ asset('articles/search?kata_kunci=&select-subKateg=coding-art') }}">Berita Hot terkini</a></li>
-							<li><a href="{{ asset('articles/search?kata_kunci=&select-subKateg=coding-art') }}">Pengetahuan umum yang unik</a></li> 
+							<li><a href="{{ asset('artikel/search?kata_kunci=&select-subKateg=coding') }}">Macam-macam bacaan Ngoding</a></li>
+							<li><a href="{{ asset('artikel/search?kata_kunci=&select-subKateg=berita-hot') }}">Berita Hot terkini</a></li>
+							<li><a href="{{ asset('artikel/search?kata_kunci=&select-subKateg=pengetahuan-umum') }}">Pengetahuan umum yang unik</a></li> 
 					</div>
 					<div class="cat">
 						<h3>Jenis Tutorial</h3>
@@ -194,5 +219,12 @@ Single Sharing's Doank's
 @push('scripts')
 <script type="text/javascript">
 	$('#footer-single').attr('class', 'cap1');
+	if ($('#ada').html() != null) {
+		$('#related').html('Related Posts');
+	}
+	else{
+		$('#related').html('Related Posts Not Found');
+	}
+
 </script>
 @endpush

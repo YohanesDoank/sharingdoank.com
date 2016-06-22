@@ -13,7 +13,7 @@ active
 	<div class="container">
 		<div class="content-text facilis">
 			<div class="content-info">
-				<h2>Tutorials</h2>
+				<h2>Selamat datang ! di Tutorial :V</h2>
 				<p>Ini adalah Kumpulan tutorial...</p>
 				<p>Silahkan cari tutorial yang anda inginkan :) berdasarkan judul dan kategori :)</p>
 			</div>
@@ -49,7 +49,7 @@ active
 		 					</tr>
 		 					<tr>
 		 						<td>
-		 						<label for="title" class="control-label">Kategori Post
+		 						<label for="title" class="control-label">Kategori Post - <i><small>required</small></i>
 				 					@if (Session::has('errors'))
 				 						<span class="alert-danger"> -<i> {{ Session::get('errors')}} </i></span>
 				 					@endif

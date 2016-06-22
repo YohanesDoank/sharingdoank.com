@@ -59,6 +59,7 @@ cap1
 					<p class="Sed">
 					</p> 
 				</div>
+				<div class="clearfix"> </div>
 				<div class="read">
 					<a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}">Kepoin...</a>
 				</div>
@@ -68,14 +69,14 @@ cap1
 
 			@endforeach
 			</div>
-			<div class="categories">
+			<div class="categories" style="background-color: black;">
 				<div class="categ">
 					<div class="cat">
 						<h3>Jenis Artikel</h3>
 						<ul>
-							<li><a href="articles/search?kata_kunci=&select-subKateg=coding-art">Macam-macam bacaan Ngoding</a></li>
-							<li><a href="articles/search?kata_kunci=&select-subKateg=coding-art">Berita Hot terkini</a></li>
-							<li><a href="articles/search?kata_kunci=&select-subKateg=coding-art">Pengetahuan umum yang unik</a></li> 
+							<li><a href="artikel/search?kata_kunci=&select-subKateg=coding">Macam-macam bacaan Ngoding</a></li>
+							<li><a href="artikel/search?kata_kunci=&select-subKateg=berita-hot">Berita Hot terkini</a></li>
+							<li><a href="artikel/search?kata_kunci=&select-subKateg=pengetahuan-umum">Pengetahuan umum yang unik</a></li> 
 					</div>
 					<div class="cat">
 						<h3>Jenis Tutorial</h3>

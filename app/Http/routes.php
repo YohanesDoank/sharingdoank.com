@@ -26,11 +26,12 @@ Route::group(['middleware' => 'web'], function () {
 	// route page normal atau biasa
 	Route::get('/', 'ArticleController@index');
 	Route::get('about', 'PageController@about');
-	Route::get('articles', 'PageController@articles');
+	Route::get('artikel', 'ArticleController@articles');
 	Route::get('contact', 'PageController@contact');
 	Route::get('single', 'PageController@single');
-	Route::get('tutorials', 'ArticleController@tutorials');
+	Route::get('tutorial', 'ArticleController@tutorials');
 	Route::get('tutorials/search', 'ArticleController@searchTutor');
+	Route::get('artikel/search', 'ArticleController@searchArt');
 
 	Route::get('createPost',  ['middleware' => 'auth', 'uses' => 'PageController@createPost']);
 	// Route::get('createPost', 'PageController@createPost');
