@@ -15,6 +15,7 @@ use Input;
 use Validator;
 use Response;
 use Datatables;
+
 class PostController extends Controller
 {
     protected $rules = [
@@ -66,6 +67,10 @@ class PostController extends Controller
             $artikel->kategori = $request->kategori;
             $artikel->SubKategori = $request->subKategori;
             $artikel->penginput = $request->penginput;
+
+            // $date = date_create();
+            // $artikel->created_at = date_timestamp_get($date);
+            // $japanUser = User::find($someId);
 
             // $artikel->kategori = $request->kategori;
 

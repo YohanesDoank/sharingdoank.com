@@ -32,7 +32,9 @@ class ArticleController extends Controller
 
     public function tutorials(){
         $message = Artikel::where("kategori","=","tutorial")->orderby("created_at", "slug")->paginate(6);
-        return view('page.tutorials',compact('message'));
+        $total = Artikel::where("kategori","=","tutorial")->orderby("created_at", "slug")->get();
+
+        return view('page.tutorials',compact('message', 'total'));
     }
 
     public function searchTutor(){
@@ -41,20 +43,32 @@ class ArticleController extends Controller
         $subKateg = Input::get('select-subKateg');
         // $error = Input::get('select-subKateg');
         $message = Artikel::where('article.title',  'like', '%'.$kata.'%' )->where('kategori','like','tutorial')->where('SubKategori','like','%'.$subKateg.'%')->paginate(6);
+        $total = Artikel::where('article.title',  'like', '%'.$kata.'%' )->where('kategori','like','tutorial')->where('SubKategori','like','%'.$subKateg.'%')->get();
         // return Redirect::to('tutorials')->with('message', $message);
         // return $message;
         if ($subKateg == "" ) {
             $message = Artikel::where("kategori","=","tutorial")->orderby("created_at", "slug")->paginate(6);
+            $total = Artikel::where("kategori","=","tutorial")->orderby("created_at", "slug")->get();
             Session::flash('errors', 'Pilih salah satu Kategori');
-            return view('page.tutorials',compact('message', 'kata', 'subKateg'));            
+            return view('page.tutorials',compact('message', 'kata', 'subKateg', 'total'));            
+        }
+        else if($subKateg == "all" ) {
+            if ($kata != "") {
+                $message = Artikel::where('article.title',  'like', '%'.$kata.'%' )->where('kategori','like','tutorial')->paginate(6); 
+                $total = Artikel::where('article.title',  'like', '%'.$kata.'%' )->where('kategori','like','tutorial')->get(); 
+             } 
+             else{
+                $message = Artikel::where("kategori","=","tutorial")->orderby("created_at", "slug")->paginate(6);
+                $total = Artikel::where("kategori","=","tutorial")->orderby("created_at", "slug")->get();
+             }
+            return view('page.tutorials',compact('message', 'kata', 'subKateg', 'total'));               
         }
         else{
-            return view('page.tutorials',compact('message', 'kata', 'subKateg'));            
+            return view('page.tutorials',compact('message', 'kata', 'subKateg', 'total'));            
         }
     }
 
     public function searchArt(){
-        
         $kata = Input::get('kata_kunci');
         $subKateg = Input::get('select-subKateg');
         $date = date('Y-m-d');
@@ -67,6 +81,11 @@ class ArticleController extends Controller
             Session::flash('errors', 'Pilih salah satu Kategori');
             return view('page.articles',compact('message', 'message2', 'kata', 'subKateg'));            
         }
+        else if($subKateg == "all" ) { 
+            $message = Artikel::where("kategori","=","artikel")->orderby("created_at", "slug")->paginate(6);
+            $message2 = Artikel::where('article.title',  'like', '%'.$kata.'%' )->where('kategori','like','artikel')->paginate(9);
+            return view('page.articles',compact('message', 'message2', 'kata', 'subKateg'));            
+        }
         else{
             return view('page.articles',compact('message','message2', 'kata', 'subKateg'));            
         }
@@ -76,7 +95,7 @@ class ArticleController extends Controller
     public function show_detail_post($kategori, $SubKategori1, $slug){
         $slugNoBug = basename($_SERVER['REQUEST_URI']);
         $artikel = Artikel::where("slug","=",$slugNoBug)->where("kategori", "=", $kategori)->where("SubKategori", "like",'%'.$SubKategori1.'%')->get();
-        $artikelRelated = Artikel::where("slug","<>",$slug)->where("kategori", "=", $kategori)->where("SubKategori", "like",'%'.$SubKategori1.'%')->paginate(8);
+        $artikelRelated = Artikel::where("slug","<>",$slugNoBug)->where("kategori", "=", $kategori)->where("SubKategori", "like",'%'.$SubKategori1.'%')->paginate(8);
         return view('page.single',compact('artikel', 'artikelRelated')); 
         // echo $kategori.$SubKategori1.$slug ;
     }
@@ -84,13 +103,13 @@ class ArticleController extends Controller
     public function show_detail_post2($kategori, $SubKategori1, $SubKategori2, $slug){
         $slugNoBug = basename($_SERVER['REQUEST_URI']);
         $artikel = Artikel::where("slug","=",$slugNoBug)->where("kategori", "=", $kategori)->where("SubKategori", "like",'%'.$SubKategori1.'%')->get();
-        $artikelRelated = Artikel::where("slug","<>",$slug)->where("kategori", "=", $kategori)->where("SubKategori", "like",'%'.$SubKategori2.'%')->paginate(8);
+        $artikelRelated = Artikel::where("slug","<>",$slugNoBug)->where("kategori", "=", $kategori)->where("SubKategori", "like",'%'.$SubKategori2.'%')->paginate(8);
         return view('page.single',compact('artikel', 'artikelRelated'));  
     }
     public function show_detail_post3($kategori, $SubKategori1, $SubKategori2, $SubKategori3, $slug){
         $slugNoBug = basename($_SERVER['REQUEST_URI']);
         $artikel = Artikel::where("slug","=",$slugNoBug)->where("kategori", "=", $kategori)->where("SubKategori", "like",'%'.$SubKategori1.'%')->get();
-        $artikelRelated = Artikel::where("slug","<>",$slug)->where("kategori", "=", $kategori)->where("SubKategori", "like",'%'.$SubKategori3.'%')->paginate(8);
+        $artikelRelated = Artikel::where("slug","<>",$slugNoBug)->where("kategori", "=", $kategori)->where("SubKategori", "like",'%'.$SubKategori3.'%')->paginate(8);
         return view('page.single',compact('artikel', 'artikelRelated'));  
     }
 

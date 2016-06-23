@@ -17,25 +17,26 @@ cap1
 @endsection
 
 @section('content')
-<div class="content tut" style="min-height: 1200px;">
+<div class="content tut" style="min-height: 1200px;" >
 	<div class="container">
 		<div class="content-text facilis">	
 			<div class="title">
 			@foreach ($message as $editValue)
+			<div id="pembungkus-index">
 				<div class="some-title">
-					<h3><a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}">{!! $editValue->slug !!}</a></h3>
+					<h3><a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}">{!! ucfirst($editValue->title) !!}</a></h3>
 				</div>
 				<div class="john">
-					<p><a href="#">
+					<p><a href="#">oleh : 
 					<?php 
 						if($editValue->penginput != "") {
-							echo $editValue->penginput;
+							echo ucfirst($editValue->penginput);
 
 						}else{
 							echo "Anonimuz";
 						}
 					?>
-					</a><span>{!! $editValue->created_at !!}</span></p>
+					</a><span>{!! date("D, d / M / Y", strtotime($editValue->created_at)) !!}</span></p>
 				</div>
 				<div class="clearfix"> </div>
 				<div class="tilte-grid">
@@ -54,22 +55,21 @@ cap1
 					?>
 					</center>
 					<p class="vel"><a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{{ $editValue->slug }}">
-						{!!str_limit(strip_tags($editValue->content), 150 , " ........................")!!}
+						{!! ucfirst(str_limit(strip_tags($editValue->content), 150 , " ........................")) !!}
 					</a></p>
 					<p class="Sed">
 					</p> 
 				</div>
-				<div class="clearfix"> </div>
+				<div class="clearfix"></div>
 				<div class="read">
-					<a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}">Kepoin...</a>
+					<a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}">Read More</a>
 				</div>
-				<div class="border">
-					<p></p>
-				</div>
-
+				<div class="clearfix"> </div>
+			</div>
+			<!-- <center><div class="border"><p></p></div></center> -->
 			@endforeach
 			</div>
-			<div class="categories" style="background-color: black;">
+			<div class="categories">
 				<div class="categ">
 					<div class="cat">
 						<h3>Jenis Artikel</h3>

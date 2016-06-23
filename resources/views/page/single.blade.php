@@ -20,10 +20,10 @@ Single Sharing's Doank's
 			<div class="title">
 			@foreach ($artikel as $message)
 				<div class="some-title">
-					<h3>{!! $message->title !!}</h3>
+					<h3>{!! ucfirst($message->title) !!}</h3>
 				</div>
 				<div class="john">
-					<p><a href="#">{!! $message->penginput !!}</a><span>{!! $message->created_at !!}</span></p>
+					<p><a href="#" class="glyphicon glyphicon-profile">oleh : {!! ucfirst($message->penginput) !!}</a><span>{!!date("D, d / M / Y", strtotime($message->created_at)) !!}</span></p>
 				</div>
 				<div class="clearfix"> </div>
 				<div class="tilte-grid">
@@ -109,7 +109,7 @@ Single Sharing's Doank's
 					</div>
 				</div>
 			</div>
-			<div class="categories" style="background-color: black;">
+			<div class="categories">
 				<div class="categ">
 					<div class="cat">
 						<h3>Jenis Artikel</h3>

@@ -20,9 +20,12 @@ active
 	<div class="container">
 		<div class="content-text facilis">
 			<div class="content-info">
-				<h2>Selamat datang ! di Artikel :V</h2>
+				<h2>Selamat datang di Artikel !! :V</h2>
 				<p>Ini adalah Kumpulan artikel...</p>
 				<p>Silahkan cari artikel yang anda inginkan :) berdasarkan judul dan kategori :)</p>
+				<?php  if(!empty($subKateg)) { ?>
+				<h3><i>Pencarian Artikel </i><u><?php echo strtoupper('<b>'.$subKateg.'</b>'); ?></u></h3>
+				<?php }?>
 			</div>
 		   <div class="form-group has-feedback">
 		 		<div class="table-responsive">
@@ -61,6 +64,7 @@ active
 		 						@if(isset($subKateg))
 		 								{!! Form::select('select-subKateg', [
 		 									'' => '---',
+		 									'all' => 'All',
 				 							'coding' => 'Coding',
 				 							'berita-hot' => 'Berita Hot',
 				 							'pengetahuan-umum' => 'Pengetahuan Umum'], 
@@ -72,7 +76,8 @@ active
 				 						) !!}
 		 							@else
 			 							{!! Form::select('select-subKateg', [
-			 							'' => '---',
+		 									'' => '---',
+		 									'all' => 'All',
 				 							'coding' => 'Coding',
 				 							'berita-hot' => 'Berita Hot',
 				 							'pengetahuan-umum' => 'Pengetahuan Umum'], 
@@ -117,7 +122,7 @@ active
 						<div class="article-grid-right">
 							<h4><a href="{{ asset($path) }}">{{ $artikel->title }}</a></h4>
 							<p>{!! str_limit(strip_tags($artikel->content), 50 , " ........................") !!}
-								<span>{{ $artikel->created_at }}</span>
+								<span><?php echo date("D, d-M-y", strtotime($artikel->created_at)); ?></span>
 							</p>
 						</div>
 						<div class="clearfix"> </div>
@@ -127,8 +132,8 @@ active
 						} 
 						else{
 					?>
-					<div class="article-grid" style="margin-top: 20px;">
-						<div class="article-grid-left">
+					<div class="article-grid" style="margin-top: 10px;">
+						<div class="article-grid-left" >
 							<a href="{{ asset($path) }}">
 								<?php if ($artikel->path != "") { ?>
 									<img src="{{ asset($artikel->path) }}" alt=" "  />
@@ -140,17 +145,13 @@ active
 						<div class="article-grid-right">
 							<h4><a href="{{ asset($path) }}">{{ $artikel->title }}</a></h4>
 							<p>{!! str_limit(strip_tags($artikel->content), 50 , " ........................") !!}
-								<span>{{ $artikel->created_at }}</span>
+								<span><?php echo date("D, d-M-y", strtotime($artikel->created_at)); ?></span>
 							</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
 					<?php } ?>
 				@endforeach
-					<div class="clearfix"> </div>
-					<div class="view">
-						<a href="single">Lihat donk</a>
-					</div>
 				</div>
 			</div>
 			<div class="article-right">
@@ -168,11 +169,11 @@ active
 
 					<div class="article-right-grid">
 						<?php if ($artikel2->path != "") { ?>
-							<a href="{{ asset($artikel2->path) }}" class="b-link-stripe b-animate-go   swipebox"  title="">
+							<a href="{!! str_replace('-', '/', $artikel2->SubKategori) !!}/{!! $artikel2->slug !!}" >
 								<img src="{{ asset($artikel2->path) }}" alt=" " />
 							</a>
 						<?php } else { ?>
-						<a href="{{ asset('images/no-image.jpg') }}" class="b-link-stripe b-animate-go   swipebox"  title="">
+						<a href="{!! str_replace('-', '/', $artikel2->SubKategori) !!}/{!! $artikel2->slug !!}" >
 							<img src="{{ asset('images/no-image.jpg') }}" alt=" " />
 						</a>
 						<?php } ?>

@@ -1,4 +1,4 @@
-@extends('layouts.layout_spesific')
+@extends('layouts.layout')
 
 @section('title')
 Tutorials Sharing's Doank's 
@@ -13,9 +13,12 @@ active
 	<div class="container">
 		<div class="content-text facilis">
 			<div class="content-info">
-				<h2>Selamat datang ! di Tutorial :V</h2>
+				<h2>Selamat datang di Tutorial !! :V</h2>
 				<p>Ini adalah Kumpulan tutorial...</p>
 				<p>Silahkan cari tutorial yang anda inginkan :) berdasarkan judul dan kategori :)</p>
+				<?php  if(!empty($subKateg)) { ?>
+				<h3><i>Pencarian Artikel </i><u><?php echo strtoupper('<b>'.$subKateg.'</b>'); ?></u></h3>
+				<?php }?>
 			</div>
 
 		   <div class="form-group has-feedback">
@@ -57,6 +60,7 @@ active
 		 						@if(isset($subKateg))
 		 								{!! Form::select('select-subKateg', [
 		 									'' => '---',
+		 									'all' => 'All',
 				 							'coding-php' => 'Coding - PHP',
 				 							'coding-vb' => 'Coding - VB',
 				 							'coding-java-desktop' => 'Coding - Java Desktop',
@@ -75,7 +79,8 @@ active
 				 						) !!}
 		 							@else
 			 							{!! Form::select('select-subKateg', [
-			 							'' => '---',
+		 								'' => '---',
+		 								'all' => 'All',
 			 							'coding-php' => 'Coding - PHP',
 			 							'coding-vb' => 'Coding - VB',
 			 							'coding-java-desktop' => 'Coding - Java Desktop',
@@ -124,20 +129,19 @@ active
 			<?php $count = 0; ?>
 			@foreach ($message as $editValue)
 		<div class="col-md-4 tutorial-grid">
-			<div class="panel panel-info" style="height: 500px;">
-				<div class="panel-heading">
-					<h3 class="panel-title">
-						<a class="url-tutorial" href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}">{!! $editValue->title !!}</a>
-					</h3>
+			<div class="panel panel-footer" style="height: 500px; box-shadow:20px 15px 9px #adadad;" >
+				<div class="some-title" style="">
+					<h3><a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}">{!! ucfirst($editValue->title) !!}</a></h3>
 				</div>
 				<div class="panel-body">
 					<br>
 					<?php  
 						if ($editValue->path != "") {
 					?>
+					
 						<div class="tilte-grid2">
 							<a class="url-tutorial" href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}"><img width="330" height="281" src="{!! $editValue->path !!}" alt=" " /></a>
-						</div>
+						</div>	
 					<?php 
 						}
 						else{
@@ -151,10 +155,12 @@ active
 					<!--
 					<iframe src="https://player.vimeo.com/video/40672852?color=ffffff&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> -->
 					<br>
-					<p>{!!str_limit(strip_tags($editValue->content), 200 , " ........................")!!} </p>
-					<a class="url-tutorial" href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}" style="padding-top: 10px;">
-					<strong><u><i>Baca Lebih Lanjut....</i></u>
+					<p>{!!str_limit(strip_tags($editValue->content), 140 , " ........")!!} 
+						<a class="url-tutorial" href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}" style="padding-top: 10px;">
+						<strong><u><i> Baca Lebih Lanjut....</i></u>
 					</strong></a>
+					</p>
+					
 				</div>
 			</div>
 		</div>
@@ -169,10 +175,10 @@ active
 						 echo '<center><h4><b><i>tutorial tidak ditemukan....</i></b></h4></center>';
 					}
 					else{
-						 echo '<center><h4><b><i>'.$count.' tutorial ditemukan....</i></b></h4></center>';
+						 echo '<center><h4><b><i>'.count($total).' tutorial ditemukan....</i></b></h4></center>';
 					}
 				 ?>
-				<div style="margin-left:40%;">{!! $message->appends(Input::only('kata_kunci', 'select-subKateg'))->links() !!}</div>
+				<center><div>{!! $message->appends(Input::only('kata_kunci', 'select-subKateg'))->links() !!}</div></center>
 				@include('layouts.footer')
 		</div>
 	</div>

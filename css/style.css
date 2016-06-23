@@ -130,6 +130,17 @@ padding:0;
 	-o-border-radius:15px;
 	-ms-border-radius:15px;
 	}
+#pembungkus-index{
+	/*padding: 15px;*/
+	box-shadow:20px 10px 10px #adadad;
+	padding: 1.5em;
+	border-radius: 2.5em;
+	border-top: 2.5px dashed silver;
+	border-bottom: 5.5px dashed silver;
+	border-left: 1.5px dashed grey;
+	border-right: 1.5px dashed grey;
+	background-color: #f3f3f3;
+}
 .title{
 	float:left;
 	width:73%;
@@ -139,8 +150,11 @@ padding:0;
 	width:22%;
 	}
 .categ{
-	border-left:1px dashed #E1DDD3;
-	border-right:1px dashed #E1DDD3;
+	box-shadow:20px 15px 9px #adadad;
+	background-color:#f3f3f3;
+	border:2.5px dashed silver;
+	border-radius: 1.5em ;
+	/*border-right:2.5px dashed silver;*/
 	padding:0 1em;
 	}
 .some-title{
@@ -172,7 +186,7 @@ padding:0;
 	margin:0;
 	}
 .john p a{
-	font-size:14px;
+	font-size:15px;
 	color:#538C2E;
 	font-weight:600;
 	font-style:italic;
@@ -197,7 +211,7 @@ padding:0;
 	padding: 3em 0em 1em;
 	font-family: 'Playfair Display', serif;
 	font-weight: 600;
-	border-bottom:1px dashed #E1DDD3;
+	border-bottom:1.5px dashed #000;
 	}
 .cat ul{
 	padding:0;
@@ -206,7 +220,7 @@ padding:0;
 .cat ul li{
 	list-style-type:none;
 	padding-bottom: 1em;
-	border-bottom: 1px dashed #E1DDD3;
+	border-bottom: 1px dashed silver;
 	margin-bottom: 1em;
 }
 .cat ul li a{
@@ -265,7 +279,7 @@ padding:0;
 	padding: 0 0em .5em;
 	font-family: 'Playfair Display', serif;
 	font-weight: 600;
-	border-bottom:1px dashed #E1DDD3;
+	border-bottom:1px dashed silver;
 	}
 .view{
 	padding:1em 0 0;
@@ -373,9 +387,9 @@ padding:0;
 
 .tilte-grid2 img{
 	width:100%;
-	border:8px solid #ECE5D0;
+	border:2px groove #ECE5D0;
 	box-shadow: 0px 1px 8px #adadad;
-	border-radius:10px;
+	border-radius:1px;
 	-webkit-border-radius:10px;
 	-moz-border-radius:10px;
 	-o-border-radius:10px;
@@ -438,8 +452,8 @@ p.vel a:hover{
 	}
 .border{
 	padding:0;
-	border-bottom:1px dashed #E1DDD3;
-	border-top:1px dashed #E1DDD3;
+	border-bottom:2px dashed silver;
+	border-top:1px dashed silver;
 	background:#fff;
 	margin-bottom: 2.5em;
 	}
@@ -526,8 +540,10 @@ p.vel a:hover{
 /*-- //content --*/
 /*-- footer --*/
 .footer{
-	background:#54472A;
-	padding:10em 0em 3em;
+	position: fixed;
+	bottom: 0%;
+	background: #54472A;
+	padding: 10em 0em 3em;
 	
 	}
 .footer-grid{
