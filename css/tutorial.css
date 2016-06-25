@@ -1,0 +1,331 @@
+#tutorial-name{
+    font-family: 'belepotanregular';   
+    color: blue;
+}
+#welcome{
+    font-family: 'belepotanregular';
+}
+
+#card-style{ 
+    position: relative;
+    height: 99%; 
+    box-shadow:20px 15px 9px #adadad;
+}	
+
+.card-title-left{
+    width: 70%;
+}
+
+#card-title{
+    text-decoration: none;
+    color: #333333;
+
+}
+#card-title:hover{
+    color: #3498db;
+}
+
+#iconBtnCari{
+    width: 94px; 
+    font-size: 5em
+}
+/*Dibawah buat ngecilin judul dari card view tutorial-tutorial*/
+@media (max-width: 1007px){
+    .card-title-left{
+        width: 85%;
+    }
+}
+
+
+@media (max-width: 576px){
+    .card-title-left{
+        width: 70%;
+    }
+}
+
+
+@media (max-width: 419px){
+    .card-title-left{
+        width: 75%;
+    }
+
+    .ribbon.base{
+        width: 25%;
+    }
+}
+
+@media (max-width: 360px){
+    .card-title-left{
+        width: 70%;
+    }
+    .ribbon.base{
+        width: 30%;
+    }
+}
+/*di bawah buat ngecilin size tombol CARI*/
+@media (max-width: 389px){
+    #btnCari{
+        /*width: 20px;*/
+        position: relative;
+        margin-top: 30px;
+        height: 80%;
+        width: 77%;
+        margin-left: 10px;
+        /*width: 50px;*/
+        /*font-size: em;*/
+    }
+    #iconBtnCari{
+        /*background-color: black;*/
+        margin-left: -20px;
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 340px){
+    #btnCari{
+        /*width: 20px;*/
+        position: relative;
+        margin-top: 30px;
+        height: 80%;
+        width: 53%;
+        margin-left: 10px;
+        /*width: 50px;*/
+        /*font-size: em;*/
+    }
+    #iconBtnCari{
+        /*background-color: black;*/
+        margin-left: -35px;
+        font-size: 1.8em;
+    }
+    #tulisanCari{
+        margin-left: -4px;
+    }
+}
+
+@media (max-width: 340px){
+    #btnCari{
+        /*width: 20px;*/
+        position: relative;
+        margin-top: 30px;
+        height: 80%;
+        width: 53%;
+        margin-left: 5px;
+        /*width: 50px;*/
+        /*font-size: em;*/
+    }
+    #iconBtnCari{
+        /*background-color: black;*/
+        margin-left: -38px;
+        font-size: 1.6em;
+    }
+    #tulisanCari{
+        margin-left: -7px;
+    }
+}
+/*@media (max-width: 1440px){
+    #card-style{
+        text-decoration: none;
+        color: #333333;
+        height: 540px;
+    }
+
+}
+
+@media (max-width: 1366px){
+    #card-style{
+        text-decoration: none;
+        color: #333333;
+        height: 540px;
+    }
+
+}
+
+@media (max-width: 1280px){
+    #card-style{
+        text-decoration: none;
+        color: #333333;
+        height: 540px;
+    }
+
+}
+
+@media (max-width: 1024px){
+
+}
+
+@media (max-width: 768px){
+
+}
+
+@media (max-width: 667px){
+
+}
+
+@media (max-width: 640px){
+
+}
+
+@media (max-width: 558px){
+    #card-style{
+        text-decoration: none;
+        color: #333333;
+        height: 530px;
+    }
+    #card-title{
+
+    }  
+
+
+}
+
+@media (max-width: 419px){
+    #card-style{
+        text-decoration: none;
+        color: #333333;
+        height: 580px;
+    }
+
+}
+
+
+@media (max-width: 390px){
+    #card-style{
+        text-decoration: none;
+        color: #333333;
+        height: 599px;
+    }
+
+}
+
+@media (max-width: 364px){
+    #card-style{
+        text-decoration: none;
+        color: #333333;
+        height: 620px;
+    }
+
+}
+
+@media (max-width: 339px){
+    #card-style{
+        text-decoration: none;
+        color: #333333;
+        height: 630px;
+    }
+
+}*/
+
+
+.ribbon {
+    position: absolute;
+    top: 20px;
+    right: -5px;
+    padding: 15px;
+}
+.ribbon-content{
+    position: relative; 
+    width: 100%; 
+    height: 100px; 
+    background: #f1f1f1; 
+    border: 1px solid #DDD;    
+}
+.ribbon.base {
+    background: #3498db;
+    color: #fff;
+    border-right: 5px solid #8bc4ea;
+    box-shadow:15px 10px 13px #adadad;
+}
+.ribbon.base:hover{
+    color: black;
+}
+.ribbon.light {
+    background: #ecf0f1;
+    color: #2c3e50;
+    border-right: 5px solid #dde4e6;
+}
+.ribbon.dark {
+    background: #131313;
+    color: #fff;
+    border-right: 5px solid #464646;
+}
+.ribbon.base-alt {
+    background: #9cd70e;
+    color: #fff;
+    border-right: 5px solid #c6f457;
+    box-shadow:15px 10px 13px #adadad;
+}
+.ribbon.red {
+    background: #e91b23;
+    color: #fff;
+    border-right: 5px solid #f2787d;
+}
+.ribbon.orange {
+    background: #ff8a3c;
+    color: #fff;
+    border-right: 5px solid #ffc7a2;
+}
+.ribbon.yellow {
+    background: #ffd800;
+    color: #fff;
+    border-right: 5px solid #ffe866;
+}
+.ribbon:before, .ribbon:after {
+    content: '';
+    position: absolute;
+    left: -9px;
+    border-left: 10px solid transparent;
+}
+.ribbon:before {
+    top: 0;
+}
+.ribbon:after {
+    bottom: 0;
+}
+.ribbon.base:before {
+    border-top: 27px solid #3498db;
+}
+.ribbon.base:after {
+    border-bottom: 27px solid #3498db;
+}
+.ribbon.light:before {
+    border-top: 27px solid #ecf0f1;
+}
+.ribbon.light:after {
+    border-bottom: 27px solid #ecf0f1;
+}
+.ribbon.dark:before {
+    border-top: 27px solid #131313;
+}
+.ribbon.dark:after {
+    border-bottom: 27px solid #131313;
+}
+.ribbon.base-alt:before {
+    border-top: 27px solid #9cd70e;
+}
+.ribbon.base-alt:after {
+    border-bottom: 27px solid #9cd70e;
+}
+.ribbon.red:before {
+    border-top: 27px solid #e91b23;
+}
+.ribbon.red:after {
+    border-bottom: 27px solid #e91b23;
+}
+.ribbon.orange:before {
+    border-top: 27px solid #ff8a3c;
+}
+.ribbon.orange:after {
+    border-bottom: 27px solid #ff8a3c;
+}
+.ribbon.yellow:before {
+    border-top: 27px solid #ffd800;
+}
+.ribbon.yellow:after {
+    border-bottom: 27px solid #ffd800;
+}
+.ribbon span {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+}
+

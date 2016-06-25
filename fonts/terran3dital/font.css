@@ -1,0 +1,11 @@
+@font-face {
+	font-family: 'terran3dital';
+	src: url('terran3dital.eot');
+	src: local('terran3dital'), url('terran3dital.woff') format('woff'), url('terran3dital.ttf') format('truetype');
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_64827">Text with this font applied</p> */
+.fontsforweb_fontid_64827 {
+	font-family: 'terran3dital' !important;
+}
+
+/* Font downloaded from FontsForWeb.com */
