@@ -27,6 +27,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="{{ asset('css/font_OpenSans.css') }}" rel='stylesheet' type='text/css'>
 <link href="{{ asset('css/font_Lato.css') }}" rel='stylesheet' type='text/css'>
 <link href="{{ asset('css/font_PlayFair.css') }}" rel='stylesheet' type='text/css'>
+<link href="{{ asset('css/font-awesome.min.css') }}" rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" type="text/css" href="{{ asset('fonts/terran3dital/font.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('fonts/belepotan/stylesheet.css') }}">
 <script type="text/javascript" src="{{ asset('js/jquery-2.2.0.js') }}"></script>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); }

@@ -27,16 +27,24 @@ cap1
 					<h3><a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{!! $editValue->slug !!}">{!! ucfirst($editValue->title) !!}</a></h3>
 				</div>
 				<div class="john">
-					<p><a href="#">oleh : 
-					<?php 
-						if($editValue->penginput != "") {
-							echo ucfirst($editValue->penginput);
+					<p>
+						<span class="glyphicon glyphicon-user" style="float: right; color: black;">
+							<a href="#" >
+							<?php 
+								if($editValue->penginput != "") {
+									echo ucfirst($editValue->penginput);
 
-						}else{
-							echo "Anonimuz";
-						}
-					?>
-					</a><span>{!! date("D, d / M / Y", strtotime($editValue->created_at)) !!}</span></p>
+								}else{
+									echo "Anonimuz";
+								}
+							?>
+							</a>
+						</span>
+						<div class="clearfix"></div>
+						<span class="glyphicon glyphicon-calendar" style="font-size: 1em;margin-top: 0.5em;">
+							<?php echo " "; ?>{!! Helper::indonesian_date($editValue->created_at) !!}
+						</span>
+					</p>
 				</div>
 				<div class="clearfix"> </div>
 				<div class="tilte-grid">
@@ -55,7 +63,7 @@ cap1
 					?>
 					</center>
 					<p class="vel"><a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{{ $editValue->slug }}">
-						{!! ucfirst(str_limit(strip_tags($editValue->content), 150 , " ........................")) !!}
+						{!! ucfirst(str_limit(strip_tags($editValue->content), 300 , " ........................")) !!}
 					</a></p>
 					<p class="Sed">
 					</p> 

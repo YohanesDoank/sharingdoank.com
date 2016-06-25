@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="{{ asset('/') }}" class="navbar-brand"><strong>S</strong>haring<strong>D</strong>oank</a>
+      <a href="{{ asset('/') }}" class="navbar-brand" id="brand"><strong>S</strong>haring<strong>D</strong>oank</a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
@@ -143,6 +143,9 @@ function hasScrolled() {
     padding-top: 40px;
 }
 */
+a, li a span strong{
+  font-family: 'belepotanregular';
+}
 header {
     /*background: #f5b335;*/
     /*height: 40px;*/

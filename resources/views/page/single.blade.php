@@ -19,14 +19,42 @@ Single Sharing's Doank's
 		<div class="content-text cnt-txt">	
 			<div class="title">
 			@foreach ($artikel as $message)
-				<div class="some-title">
-					<h3>{!! ucfirst($message->title) !!}</h3>
+				<div class="some-title" >
+					<h3>{!! ucwords($message->title) !!}</h3>
 				</div>
-				<div class="john">
-					<p><a href="#" class="glyphicon glyphicon-profile">oleh : {!! ucfirst($message->penginput) !!}</a><span>{!!date("D, d / M / Y", strtotime($message->created_at)) !!}</span></p>
+				<!-- <div class="clearfix"></div> -->
+				<div class="clearfix"></div>
+				<div class="john" >
+					<p>
+						<span class="glyphicon glyphicon-calendar" >
+							<b><?php echo " "; ?>
+								<a id="desk-single-calendar">
+									{!! Helper::indonesian_date($message->created_at) !!}
+								</a>
+							</b>
+						</span>
+						<p style="float:right;">
+							
+						<span class="fa fa-user" style="margin-top: 10px;">
+							<a href="#" style="font-size: 1.2em;" id="desk-single-writer">
+							<?php 
+								if($message->penginput != "") {
+									echo "By : ".ucfirst($message->penginput);
+
+								}else{
+									echo "Anonimuz";
+								}
+							?>
+							</a>
+						</span> 
+						<span class="fa fa-eye" id="desk-single-view">
+							<a> 0 view</a>
+						</span>
+						</p>
+					</p>
 				</div>
 				<div class="clearfix"> </div>
-				<div class="tilte-grid">
+				<div class="tilte-grid" style="margin-top: 20px;">
 					<?php 
 						if($message->path != ""){	
 					?>
@@ -78,7 +106,7 @@ Single Sharing's Doank's
 								?>
 								</a>
 								<h4><a href="{{ asset($path) }}">{!! str_limit(strip_tags($relatedPost->title), 40 , " ....") !!}</a></h4>
-								<p>{!! str_limit(strip_tags($relatedPost->content), 50 , " ....") !!}</p>
+								<!-- <p>{!! str_limit(strip_tags($relatedPost->content), 50 , " ....") !!}</p> -->
 							</div>
 							<?php $count += 1 ?>
 							@else
@@ -86,7 +114,6 @@ Single Sharing's Doank's
 									$newPost = '<div class="related-posts-grid">
 												<a href="'.asset($path).'"><img src="'.asset($relatedPost->path).'" alt=" " /></a>
 												<h4><a href="'.asset($path).'">'.str_limit(strip_tags($relatedPost->title), 40 , " ........................").'</a></h4>
-												<p>'.str_limit(strip_tags($relatedPost->content), 150 , " ........................").'</p>
 												</div>' ;
 
 									$arrayP[$nextCount] = $newPost;
