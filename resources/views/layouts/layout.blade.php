@@ -22,6 +22,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
+
+<script type="text/javascript" src="{{ asset('js/header.js') }}"></script>
 <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{ asset('css/font_OpenSans.css') }}" rel='stylesheet' type='text/css'>
@@ -29,6 +31,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="{{ asset('css/font_PlayFair.css') }}" rel='stylesheet' type='text/css'>
 <link href="{{ asset('css/font-awesome.min.css') }}" rel='stylesheet' type='text/css'>
 
+<link href="{{ asset('css/corner-ribbon.css') }}" rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="{{ asset('fonts/terran3dital/font.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('fonts/belepotan/stylesheet.css') }}">
 <script type="text/javascript" src="{{ asset('js/jquery-2.2.0.js') }}"></script>
@@ -44,6 +47,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="{{ asset('css/layout.css') }}" rel='stylesheet' type='text/css'>
 @yield('css-and-js')
 
+<link href="{{ asset('css/header.css') }}" rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="{{ asset('js/header.js') }}"></script>
 </head>
 	
 <body>

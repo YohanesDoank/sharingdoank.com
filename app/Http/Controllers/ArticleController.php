@@ -20,7 +20,7 @@ class ArticleController extends Controller
 {
     public function index(){
         $message = Artikel::orderby("created_at", "slug")->paginate(4);
-        return view('index',compact('message'));
+        return view('home',compact('message'));
     }
 
     public function articles(){

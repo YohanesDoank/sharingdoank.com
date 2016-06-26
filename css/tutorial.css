@@ -1,3 +1,9 @@
+
+#new{
+    position: absolute;
+    top :-18px;
+    right: -10px;
+}
 #tutorial-name{
     font-family: 'belepotanregular';   
     color: blue;
@@ -19,7 +25,6 @@
 #card-title{
     text-decoration: none;
     color: #333333;
-
 }
 #card-title:hover{
     color: #3498db;
@@ -29,10 +34,35 @@
     width: 94px; 
     font-size: 5em
 }
+.ribbon.base span{
+    text-align: center;
+}
 /*Dibawah buat ngecilin judul dari card view tutorial-tutorial*/
+@media (max-width: 1227px){
+    .card-title-left{
+        width: 75%;
+    }
+
+    .ribbon.base{
+        width: 28%;
+    }
+    .ribbon.base span{
+        /*padding-right: 30px;*/
+    }
+}
+
 @media (max-width: 1007px){
     .card-title-left{
         width: 85%;
+    }
+
+    .ribbon.base{
+        width: 20%;
+    }
+    .ribbon.base span{
+        text-align: center;
+        /*padding-left: 20px;*/
+        /*font-size: 0.82em;*/
     }
 }
 
@@ -60,6 +90,9 @@
     }
     .ribbon.base{
         width: 30%;
+    }
+    .ribbon.base span{
+        font-size: 0.77em;
     }
 }
 /*di bawah buat ngecilin size tombol CARI*/
@@ -234,10 +267,17 @@
     color: #fff;
     border-right: 5px solid #8bc4ea;
     box-shadow:15px 10px 13px #adadad;
+    transition:0.5s all;
+    -webkit-transition:0.5s all;
+    -moz-transition:0.5s all;
+    -o-transition:0.5s all;
+    -ms-transition:0.5s all;
 }
 .ribbon.base:hover{
-    color: black;
+    
+    color:black;
 }
+
 .ribbon.light {
     background: #ecf0f1;
     color: #2c3e50;
@@ -328,4 +368,3 @@
     font-size: 16px;
     font-weight: 600;
 }
-

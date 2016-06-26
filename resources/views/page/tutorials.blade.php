@@ -12,6 +12,8 @@ active
 <link rel="stylesheet" type="text/css" href="{{ asset('css/tutorial.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('fonts/terran3dital/font.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('fonts/belepotan/stylesheet.css') }}">
+@endsection
+
 @section('content')
 <div class="content tut">
 	<div class="container">
@@ -100,29 +102,10 @@ active
 			 								'id' => 'input'
 			 							]
 			 						) !!}
-
 		 							@endif
-			 						<!-- <select name="select-subKateg" id="input" class="form-control">
-			 							<option value="coding-php"> Coding - PHP </option>
-			 							<option value="coding-vb"> Coding - VB </option>
-			 							<option value="coding-java-desktop"> Coding - Java Desktop </option>
-			 							<option value="coding-java-mobile"> Coding - Java Mobile </option>
-			 							<option value="sulap"> Sulap </option>
-			 							<option value="game-pc"> Game - PS </option>
-			 							<option value="game-ps"> Game - PC </option>
-			 							<option value="game-mobile"> Game - Mobile </option>
-			 							<option value="game-jadul"> Game - Jadul </option>
-		 							</select> -->
-		 							<!-- &nbsp &nbsp <label><input type="radio" name="etype" value="coding-php"> Coding-PHP </label>
-						            &nbsp &nbsp <label><input type="radio" name="etype" value="coding-vb"> Coding-VB </label>
-						            &nbsp &nbsp <label><input type="radio" name="etype" value="coding-java-desktop"> Coding-Java Desktop </label>
-						            &nbsp &nbsp <label><input type="radio" name="etype" value="coding-java-mobile"> Coding-Java Mobile </label>
-						            &nbsp &nbsp <label><input type="radio" name="etype" value="game"> Game </label>
-						            &nbsp &nbsp <label><input type="radio" name="etype" value="sulap"> Sulap </label> -->
 		 						</td>
 		 					</tr>
-
-		 							{!! Form::close() !!}
+		 						{!! Form::close() !!}
 		 				</tbody>
 		 			</table>
 		 		</div>
@@ -132,6 +115,8 @@ active
 			<?php $count = 0; ?>
 			@foreach ($message as $editValue)
 			<?php 
+
+				// untuk begitulah
 				$ribbonHref = "tutorials/search?kata_kunci=&select-subKateg=".$editValue->SubKategori;
 				$ribbonWords = str_replace("-", " ", $editValue->SubKategori);
 				$ribbonFinal = ucwords($ribbonWords);
@@ -160,7 +145,7 @@ active
 					<table>
 						<tr>
 							<td class="card-title-left">
-							<div style="">
+							<div>
 							<?php 
 								$toPage = $editValue->kategori."/".str_replace('-', '/', $editValue->SubKategori)."/".$editValue->slug;
 							?>
@@ -177,6 +162,7 @@ active
 							<td class="card-title-right">
 							<a href="{{ asset($ribbonHref) }}">
 								<div class="ribbon base">
+								<?php if (Helper::checkNewPost($editValue->created_at) != "") echo "<img src=".asset('images/new.gif')." id='new'>" ; ?>
 									<?php if ($kateg == "Coding") {
 											echo '<center><span class="fa fa-code" style="font-size: 1em; margin-bottom:5px;"></span></center>';
 											} 
@@ -249,18 +235,6 @@ active
 
 @push('scripts')
 <script type="text/javascript">
-	$('.grow').on('click', function(){
-	  $('.pita').css({
-	    fontSize: '+=5px'
-	  });
-	});
-
-
-	$('.shrink').on('click', function(){
-	  $('.pita').css({
-	    fontSize: '-=5px'
-	  });
-	});
 	var url = window.location.href.slice(window.location.href.indexOf('com/') + 4);
 	var x = url.substr(0, 16);
 	// 	alert(x);

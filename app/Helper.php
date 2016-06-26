@@ -39,4 +39,20 @@ namespace App\Helpers;
 	    // $date = "{$date} {$suffix}";
 	    return $date;
 	} 
+	public static function checkNewPost($date){
+
+		//code dibawah buat mengecek apakah post masih baru atau tidak
+		$baru = ""; $timezone = date('d', time());
+		$string = $date;
+		$timestamp = strtotime($string);
+		$tgl = date("d", $timestamp);
+		
+		if ($timezone - $tgl <= 2) {
+			$baru = "baru";
+		}
+
+		return $baru;
+
+
+	}
   }

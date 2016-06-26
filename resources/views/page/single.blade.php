@@ -14,17 +14,18 @@ Single Sharing's Doank's
 @endsection
 
 @section('content')
-<div class="content sing">
+<div class="content tut">
 	<div class="container">
-		<div class="content-text cnt-txt">	
-			<div class="title">
+		<div class="content-text facilis">	
+			<div class="title-single">
 			@foreach ($artikel as $message)
+			<div id="pembungkus-single">
 				<div class="some-title" >
 					<h3>{!! ucwords($message->title) !!}</h3>
 				</div>
 				<!-- <div class="clearfix"></div> -->
 				<div class="clearfix"></div>
-				<div class="john" >
+				<div class="john" id="john-single">
 					<p>
 						<span class="glyphicon glyphicon-calendar" >
 							<b><?php echo " "; ?>
@@ -55,6 +56,7 @@ Single Sharing's Doank's
 				</div>
 				<div class="clearfix"> </div>
 				<div class="tilte-grid" style="margin-top: 20px;">
+				<center>
 					<?php 
 						if($message->path != ""){	
 					?>
@@ -70,6 +72,7 @@ Single Sharing's Doank's
 					<?php
 						}
 					?>
+				</center>
 				</div>
 					<p class="vel"><a href="{!! $message->slug !!}">Phasellus vel arcu vitae neque sagittis aliquet ac at purus.
 					Vestibulum varius eros in dui sagittis non ultrices orci hendrerit.
@@ -77,6 +80,7 @@ Single Sharing's Doank's
 					<p class="Sed">
 						{!! $message->content !!}
 					</p> 
+					</div>
 				@endforeach
 				<div class="clearfix"> </div>
 				<div class="related-posts">

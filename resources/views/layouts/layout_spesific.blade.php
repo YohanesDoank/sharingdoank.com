@@ -40,10 +40,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="{{ asset('js/move-top.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/easing.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/toggleMobileMenu.js') }}"></script>
+
 <!-- start-smoth-scrolling -->
 <link href="{{ asset('css/layout.css') }}" rel='stylesheet' type='text/css'>
 @yield('css-and-js')
-
+<link href="{{ asset('css/header.css') }}" rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="{{ asset('js/header.js') }}"></script>
 </head>
 	
 <body>
