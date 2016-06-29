@@ -1,19 +1,28 @@
-.navbar-inverse { background-color: #613E23}
-.navbar-inverse .navbar-nav>.active>a:hover,.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus { background-color: #C98F1A}
-.navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus { background-color: #BA8B3A}
-.dropdown-menu { background-color: #AB7A32}
+.navbar-inverse { background-color: white}
+.navbar-inverse .navbar-nav>.active>a:hover,.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus { background-color: black; }
+.navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus { background-color: black;border-bottom: solid .4em red;}
+
+.dropdown-menu { 
+    background: linear-gradient(to bottom,  #e6e6e6 0%,#fff 100%); /* W3C */}
 .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { background-color: #1F1B07}
-.navbar-inverse { background-image: none; }
-.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { background-image: none; }
-.navbar-inverse { border-color: #8C5D26}
-.navbar-inverse .navbar-brand { color: #DEC800}
-.navbar-inverse .navbar-brand:hover { color: #F2F2F2}
-.navbar-inverse .navbar-nav>li>a { color: #FFFFFF}
-.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus { color: #FFFFFF}
+.navbar-inverse {
+    background: linear-gradient(to bottom,  #e6e6e6 0%,#fff 100%); /* W3C */
+ }
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {  background-color: black;
+ }
+.navbar-inverse { border-color: silver}
+.navbar-brand{
+}
+.navbar-inverse .navbar-brand {  color: black;
+
+}
+
+.navbar-inverse .navbar-nav>li>a { color: black}
+.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus { color: white}
 .navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus { color: #FFFFFF}
 .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus { color: #FFFFFF}
-.dropdown-menu>li>a { color: #FFFFFF}
-.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { color: #E6E7FF}
+.dropdown-menu>li>a { color: black}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { color: white}
 .navbar-inverse .navbar-nav>.dropdown>a .caret { border-top-color: #F0FAFF}
 .navbar-inverse .navbar-nav>.dropdown>a:hover .caret { border-top-color: #FFFFFF}
 .navbar-inverse .navbar-nav>.dropdown>a .caret { border-bottom-color: #F0FAFF}
@@ -63,3 +72,7 @@
      float: right;
     margin-right: 98px; /*set margin this way in your custom styesheet*/
   }
+
+#icon-bar1, #icon-bar2, #icon-bar3{
+    background-color: black;
+}

@@ -1,7 +1,16 @@
 jQuery(document).ready(function($) {
+		
+		$('#footer-single').attr('class', 'cap1');
+		if ($('#ada').html() != null) {
+			$('#related').html('Related Posts');
+		}
+		else{
+			$('#related').html('Related Posts Not Found');
+		}
 	
-		var typePost = window.location.href.slice(window.location.href.indexOf('com/') + 4);
-		var cut = typePost.substr(0, 3);
+		var typePost = window.location.pathname;
+
+		var cut = typePost.substr(18, 3);
 		if (cut == "art"){
 			$('#art').attr('class', 'active');
 		}
@@ -53,5 +62,6 @@ jQuery(document).ready(function($) {
 	      // arrayVarImg[counter] = curSrc.substr(3, curSrc.length - 3);
 	      // counter += 1;
     	});
+
 
 });

@@ -25,9 +25,11 @@ class ArticleController extends Controller
 
     public function articles(){
         $date = date('Y-m-d');
-        $message = Artikel::where("kategori","=","artikel")->orderby("created_at", "slug")->where('created_at','like','%'.$date.'%')->take(6)->get();
-        $message2 = Artikel::where("kategori","=","artikel")->orderby("created_at", "slug")->paginate(9);
-        return view('page.articles',compact('message', 'message2'));
+        
+        $message = Artikel::where("kategori","=","artikel")->orderby("created_at", "slug")->paginate(6);
+        $total = Artikel::where("kategori","=","artikel")->orderby("created_at", "slug")->get();
+
+        return view('page.articles',compact('message', 'total'));
     }
 
     public function tutorials(){
@@ -69,28 +71,51 @@ class ArticleController extends Controller
     }
 
     public function searchArt(){
+        
         $kata = Input::get('kata_kunci');
         $subKateg = Input::get('select-subKateg');
-        $date = date('Y-m-d');
-
-        $message = Artikel::where("kategori","=","artikel")->orderby("created_at", "slug")->where('created_at','like','%'.$date.'%')->paginate(6);
-        $message2 = Artikel::where('article.title',  'like', '%'.$kata.'%' )->where('kategori','like','artikel')->where('SubKategori','like','%'.$subKateg.'%')->paginate(9);
-
+        // $error = Input::get('select-subKateg');
+        $message = Artikel::where('article.title',  'like', '%'.$kata.'%' )->where('kategori','like','artikel')->where('SubKategori','like','%'.$subKateg.'%')->paginate(6);
+        $total = Artikel::where('article.title',  'like', '%'.$kata.'%' )->where('kategori','like','artikel')->where('SubKategori','like','%'.$subKateg.'%')->get();
+        // return Redirect::to('tutorials')->with('message', $message);
+        // return $message;
         if ($subKateg == "" ) {
             $message = Artikel::where("kategori","=","artikel")->orderby("created_at", "slug")->paginate(6);
+            $total = Artikel::where("kategori","=","artikel")->orderby("created_at", "slug")->get();
             Session::flash('errors', 'Pilih salah satu Kategori');
-            return view('page.articles',compact('message', 'message2', 'kata', 'subKateg'));            
+            return view('page.articles',compact('message', 'kata', 'subKateg', 'total'));            
         }
-        else if($subKateg == "all" ) { 
-            $message = Artikel::where("kategori","=","artikel")->orderby("created_at", "slug")->paginate(6);
-            $message2 = Artikel::where('article.title',  'like', '%'.$kata.'%' )->where('kategori','like','artikel')->paginate(9);
-            return view('page.articles',compact('message', 'message2', 'kata', 'subKateg'));            
+        else if($subKateg == "all" ) {
+            if ($kata != "") {
+                $message = Artikel::where('article.title',  'like', '%'.$kata.'%' )->where('kategori','like','artikel')->paginate(6); 
+                $total = Artikel::where('article.title',  'like', '%'.$kata.'%' )->where('kategori','like','artikel')->get(); 
+             } 
+             else{
+                $message = Artikel::where("kategori","=","artikel")->orderby("created_at", "slug")->paginate(6);
+                $total = Artikel::where("kategori","=","artikel")->orderby("created_at", "slug")->get();
+             }
+            return view('page.articles',compact('message', 'kata', 'subKateg', 'total'));               
         }
         else{
-            return view('page.articles',compact('message','message2', 'kata', 'subKateg'));            
+            return view('page.articles',compact('message', 'kata', 'subKateg', 'total'));            
         }
     }
 
+    public function searchHome(){
+        $kata = Input::get('kata_kunci');
+        $date = date('Y-m-d');
+
+        $message = Artikel::where('article.title',  'like', '%'.$kata.'%' )->paginate(4);
+
+        if ($kata == "" ) {
+            $message = Artikel::orderby("created_at", "slug")->paginate(4);
+            Session::flash('errors', 'Masukkan judul yang ingin dicari !');
+            return view('home',compact('message', 'kata' ));
+        }
+        else{
+            return view('home',compact('message', 'kata'));
+        }
+    }
     // to show posting 
     public function show_detail_post($kategori, $SubKategori1, $slug){
         $slugNoBug = basename($_SERVER['REQUEST_URI']);

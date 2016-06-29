@@ -12,6 +12,12 @@ active
 <link rel="stylesheet" type="text/css" href="{{ asset('css/tutorial.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('fonts/terran3dital/font.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('fonts/belepotan/stylesheet.css') }}">
+<script type="text/javascript" src="{{ asset('js/tutorial/onlyTutorial.js')}}"></script>
+@endsection
+
+@section('hoverBrand')
+.navbar-inverse .navbar-brand:hover { color: #3498db;}
+.navbar-inverse .navbar-nav>.active>a{ background-color: black;border-bottom: solid .4em #3498db;}
 @endsection
 
 @section('content')
@@ -188,14 +194,14 @@ active
 					?>
 					
 						<div class="tilte-grid2">
-							<a class="url-tutorial" href="{{ $toPage }}"><img width="270" height="221" src="{!! $editValue->path !!}" alt=" " /></a>
+							<a class="url-tutorial" href="{{ asset($toPage) }}"><img width="270" height="221" src="{!! asset($editValue->path) !!}" alt=" " /></a>
 						</div>	
 					<?php 
 						}
 						else{
 					?>
 						<div class="tilte-grid2">
-							<a class="url-tutorial" href="{{ $toPage }}"><img width="270" height="221" src="{{ asset('images/no-image.jpg') }}" alt=" " /></a>
+							<a class="url-tutorial" href="{{ asset($toPage) }}"><img width="270" height="221" src="{{ asset('images/no-image.jpg') }}" alt=" " /></a>
 						</div>
 					<?php
 						}
@@ -220,7 +226,7 @@ active
 
 				<?php
 					if ($count <= 0) {
-						 echo '<center><h4><b><i>tutorial tidak ditemukan....</i></b></h4></center>';
+						 echo '<div style="padding:2em 0 5em;"><center><h2><b><i>Tutorial <u>Tidak</u> ditemukan....</i></b></h2><br><img src="'.asset('images/cry-512.png').'"></center></div>';
 					}
 					else{
 						 echo '<center><h4><b><i>'.count($total).' tutorial ditemukan....</i></b></h4></center>';
@@ -232,37 +238,3 @@ active
 	</div>
 	</div>
 	@endsection
-
-@push('scripts')
-<script type="text/javascript">
-	var url = window.location.href.slice(window.location.href.indexOf('com/') + 4);
-	var x = url.substr(0, 16);
-	// 	alert(x);
-	if (x == "tutorials/search") {
-		var arrayVarImg = [100];
-		var counter = 0;
-		$('.url-tutorial img').each(function () {
-		      var curSrc = $(this).attr('src');
-		      if (curSrc != "no-image") {
-		      	$(this).attr('src', '../' + curSrc);
-		      }
-		      else{
-		      	$(this).attr('src', '{{ asset("images/no-image.jpg") }}');	
-		      }
-	    });
-
-	    $('.url-tutorial').each(function () {
-		      var curSrc = $(this).attr('href');
-		      $(this).attr('href', '../' + curSrc);
-	    });
-	}
-	else{
-		$('.url-tutorial img').each(function () {
-		      var curSrc = $(this).attr('src');
-		      if (curSrc == "no-image") {
-		      	$(this).attr('src', '{{ asset("images/no-image.jpg") }}');	
-		      }
-	    });
-	}
-</script>
-@endpush

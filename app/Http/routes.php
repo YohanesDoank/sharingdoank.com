@@ -25,6 +25,7 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('showPost', ['middleware' => 'auth', 'uses' => 'DatatablesController@getIndex']);
 	// route page normal atau biasa
 	Route::get('/', 'ArticleController@index');
+	Route::get('/home/search', 'ArticleController@searchHome');
 	Route::get('about', 'PageController@about');
 	Route::get('artikel', 'ArticleController@articles');
 	Route::get('contact', 'PageController@contact');
@@ -43,7 +44,7 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('post/edit/{id}', ['middleware' => 'auth', 'uses' => 'PostController@editPost']);
 	Route::post('post/edit/{id}/update_post', ['middleware' => 'auth', 'uses' => 'PostController@update_post']);
 	Route::post('showPost/delete', 'PostController@delete_post');
-	
+	Route::post('sendQuestion', 'PostController@sendQuestion');
 	// route untuk menampilkan posting 
 	Route::get('{kategori}/{SubKategori1}/{slug}', 'ArticleController@show_detail_post');
 	Route::get('{kategori}/{SubKategori1}/{SubKategori2}/{slug}', 'ArticleController@show_detail_post2');

@@ -213,6 +213,7 @@ $(document).ready(function(){
         if (value) {
             var isiArtikel = $('#message').summernote('code');
             var titleArtikel = $('#title').val();
+            var spoiler  = $('#spoiler').val();
             var kategori = $('input[name="etype"]:checked').val();
             var subKategori = $('input[name="etype2"]:checked').val();
             var anakSubKategori =  $('input[name="etype3"]:checked').val();
@@ -234,11 +235,11 @@ $(document).ready(function(){
             
 
             if($('#inputpicture').val() == ""){
-                requestUploadArtikel(titleArtikel, isiArtikel, kategori, subKategori, null);
+                requestUploadArtikel(titleArtikel, isiArtikel, spoiler, kategori, subKategori, null);
             }
             else{
                 var ajax = function(imageData){
-                requestUploadArtikel(titleArtikel, isiArtikel, kategori, subKategori, imageData);
+                requestUploadArtikel(titleArtikel, isiArtikel, spoiler, kategori, subKategori, imageData);
                 }
 
                 imageupload($('#inputpicture').get(0), ajax);
@@ -249,7 +250,7 @@ $(document).ready(function(){
         }
     }
 
-    function requestUploadArtikel(title, isi, kategori, subKategori, imageData){
+    function requestUploadArtikel(title, isi, spoiler,  kategori, subKategori, imageData){
         $.ajaxSetup({
             headers: {
               'X-CSRF-TOKEN':$('meta[name="csrf_token"]').attr('content')
@@ -259,13 +260,14 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             data: {
-                'id'    : id,
-                'title' : title,
-                'isi' 	: isi,
-                'kategori' : kategori,
-                'image' : imageData,
-                'subKategori' : subKategori,
-                'foto' : fotoSrc
+                'id'            : id,
+                'title'         : title,
+                'spoiler'       : spoiler,
+                'isi' 	        : isi,
+                'kategori'      : kategori,
+                'image'         : imageData,
+                'subKategori'   : subKategori,
+                'foto'          : fotoSrc
             },
             dataType: "json",
             url: window.location +"/update_post",

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Artikel;
+use App\Contact;
 use View;
 use File;
 use DB;
@@ -21,6 +22,7 @@ class PostController extends Controller
     protected $rules = [
         'title' => ['required', 'max:255', 'unique:article,title'],
         'isi' => ['required'],
+        'spoiler' => ['required', 'max:255'],
         'kategori' => ['required'],
         'subKategori' => ['required'],
         'image' => ['required'],
@@ -31,6 +33,7 @@ class PostController extends Controller
             'title.required'  => ' Harus Isi judul ' ,
             'title.unique'  => ' Judul sudah Diambil ',
             'isi.required' => ' Harus Isi content ',
+            'spoiler.required' => ' Harus Isi spoiler ',
             'kategori.required' => ' Pilih salah satu kategori ',
             'subKategori.required' => ' Pilih salah satu Sub kategori ',
             'image.required' => ' Kudu ngasi Gambar utama Artikel ',
@@ -62,6 +65,7 @@ class PostController extends Controller
             $artikel = new Artikel;
             $artikel->title = $request->title;
             $artikel->content = $this->generateImage($request->isi);
+            $artikel->spoiler = $request->spoiler;
             $artikel->slug = str_replace(" ", '-', strtolower($request->title));
             $artikel->path = $this->saveImage($request->image);
             $artikel->kategori = $request->kategori;
@@ -117,6 +121,7 @@ class PostController extends Controller
                 File::delete($artikel->path);
                 $artikel->path = "";
             }
+            $artikel->spoiler = $request->spoiler; 
             $artikel->content = $this->generateImage($request->isi);
             $artikel->slug = str_slug($request->title, "-");
             $artikel->kategori = $request->kategori;
@@ -165,6 +170,17 @@ class PostController extends Controller
         return response()->json(['error_code' => $err_code, 'error' => $error, 'title' => $title, 'message' => $message]);
     }
 
+    public function sendQuestion(){
+            $kontak = new Contact;
+            $kontak->nama = Input::get('nama');
+            $kontak->no_telp = Input::get('no_telp');
+            $kontak->email = Input::get('email');
+            $kontak->pesan = Input::get('pesan');
+            $kontak->save();
+            Session::flash('errors', 'Pertanyaan telah terkirim!');
+            return view('page.contact');
+            
+    }
 
 
     // this function for genereate image from summernote editor

@@ -9,40 +9,41 @@ About Sharing's Doank's
 	<div class="container">
 		<div class="content-text">
 			<div class="content-text-bottom">
-				<h3>Who We Are</h3>
+				<h3>Who Am I ?</h3>
 				<div class="about-grids">
 					<div class="about-grid">
 						<img src="images/3.jpg" alt=" " />
 					</div>
 					<div class="about-grd">
-						<h4>Proin Dictum Elementum Velit
-							<span>FUSCE EUISMOD CONSEQUAT ANTE</span></h4>
-						<p>Pellentesque venenatis lorem vitae nisl scelerisque dignissim.
-						Sed tristique finibus leo, et sodales tortor venenatis id. Etiam
-						interdum nisi ligula, ultrices molestie augue molestie nec. 
-						Phasellus at est vitae sapien vestibulum convallis ut vel lorem. 
-						Ut mollis elementum dolor eu consequat. Donec et justo tincidunt, 
-						fringilla sem ut, ullamcorper velit. Pellentesque habitant morbi 
-						tristique senectus et netus et malesuada fames ac turpis egestas.
-						Cras tellus odio, posuere quis mi ut, posuere elementum ante. Nulla 
-						ut lacus ac mi euismod elementum.</p>
+						<h4>Saya adalah manusia sederhana yang ingin sukses "Doank"
+							<span>Sebut saja Yohanes Doank</span></h4>
+						<p>Saya adalah manusia yang kurang piknik, oleh karena nya saya menggunakan waktu selo saya untuk merancang 
+						suatu web yang bisa berguna untuk banyak orang. Website yang saya buat ini berfokus tentang sharing artikel dan tutorial baik yang sudah ada, belum ada, maupun repost dari master-master yang terpercaya, tentunya sumber pasti dicantolin diakhir posting <b style="font-size:2em;">:v</b>
+						<br>
+						Website ini dirancang menggunakan framework Laravel versi 5.2. 
+						<br>
+						Kenapa pake framework gan? 
+						<span>Namanya juga pengen nyicip biar gaul <b style="font-size:2em;">v:</b></span>
+
+						</p>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
 			</div>
 			<div class="people">
 				<div class="people-left">
-					<h3>Why People Choose Us</h3>
+					<h3>Apa Keunggulan Web Sharing ini ?</h3>
 					<ul>
 						<li>
 							<div class="numer">1
 							</div>
 							<div class="numer-right">
-								<h4><a href="#">Donec et justo tincidunt</a>
-									<span>posuere elementum ante</span></h4>
-								<p> Etiam interdum nisi ligula, ultrices molestie augue molestie nec. 
-									Phasellus at est vitae sapien vestibulum convallis ut vel lorem. 
-									Ut mollis elementum dolor eu consequat.</p>
+								<h4><a href="#">Sharing Artikel</a>
+									<span>Artikel yang berfokus pada berita HOT IT</span></h4>
+									<p> 
+										Saya dan volunteer disini akan membagikan berita-berita HOT terupdate tentang dunia IT terkini. Kami akan mengulas poin penting dari berita dengan bahasan yang menarik, bermanfaat dan maaf kalau garing joke-nya yang ingin kami
+										sampaikan :'( . Tapi tidak hanya berita tentang IT saja yang ingin kami sampaikan, namun ada beberapa berita UMUM yang tidak berkaitan dengan IT akan coba kami tayangkan :)). 
+									</p>
 							</div>
 							<div class="clearfix"> </div>
 						</li>
@@ -50,11 +51,11 @@ About Sharing's Doank's
 							<div class="numer">2
 							</div>
 							<div class="numer-right">
-								<h4><a href="#">Donec et justo tincidunt</a>
-									<span>posuere elementum ante</span></h4>
-								<p> Etiam interdum nisi ligula, ultrices molestie augue molestie nec. 
-									Phasellus at est vitae sapien vestibulum convallis ut vel lorem. 
-									Ut mollis elementum dolor eu consequat.</p>
+								<h4><a href="#">Sharing Tutorial</a>
+									<span>Tutorial yang berfokus pada Ngoding dan Nge-game</span></h4>
+									<p> 
+										Tutorial yang akan kami sampaikan berisi bahasa yang mudah dipahami dan ringan untuk dicerna ("pengennya :v"). Tutorial yang kami bagikan berisi 3 jenis kategori yaitu: Ngoding, Nge-game, dan Ny-ulap. 
+									</p>
 							</div>
 							<div class="clearfix"> </div>
 						</li>
@@ -62,11 +63,11 @@ About Sharing's Doank's
 							<div class="numer">3
 							</div>
 							<div class="numer-right">
-								<h4><a href="#">Donec et justo tincidunt</a>
-									<span>posuere elementum ante</span></h4>
-								<p> Etiam interdum nisi ligula, ultrices molestie augue molestie nec. 
-									Phasellus at est vitae sapien vestibulum convallis ut vel lorem. 
-									Ut mollis elementum dolor eu consequat.</p>
+								<h4><a href="#">Q N A</a>
+									<span>Sebut saja tanya dan jawab</span></h4>
+									<p>
+										Kami juga menyediakan kolom di bagian akhir posting untuk anda-anda bertanya. Gunakanlah bahasa yang baik, benar, tidak sara, tidak rasis, tidak menyinggung agama, dan jangan menghujat-hujat disini!! Dewasalah sebelum anda meng-submit komentar anda. 
+									</p>
 							</div>
 							<div class="clearfix"> </div>
 						</li>

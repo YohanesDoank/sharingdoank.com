@@ -43,9 +43,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!-- start-smoth-scrolling -->
 <link href="{{ asset('css/layout.css') }}" rel='stylesheet' type='text/css'>
-@yield('css-and-js')
 <link href="{{ asset('css/header.css') }}" rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="{{ asset('js/header.js') }}"></script>
+@yield('css-and-js')
 </head>
 	
 <body>

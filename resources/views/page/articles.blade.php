@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layout_spesific')
 
 @section('title')
 Articles Sharing's Doank's 
@@ -9,10 +9,15 @@ active
 @endsection
 
 @section('css-and-js')
-<link rel="stylesheet" href="{{ asset('css/swipebox.css') }}">
-<script src="{{ asset('js/jquery.swipebox.min.js') }}"></script> 
-<script type="text/javascript" src="{{ asset('js/jquery.mixitup.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/articles.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="{{ asset('css/tutorial.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('fonts/terran3dital/font.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('fonts/belepotan/stylesheet.css') }}">
+<script type="text/javascript" src="{{ asset('js/tutorial/onlyTutorial.js')}}"></script>
+@endsection
+
+@section('hoverBrand')
+.navbar-inverse .navbar-brand:hover { color: red;}
+.navbar-inverse .navbar-nav>.active>a{ background-color: black;border-bottom: solid .4em red;}
 @endsection
 
 @section('content')
@@ -20,7 +25,8 @@ active
 	<div class="container">
 		<div class="content-text facilis">
 			<div class="content-info">
-				<h2>Selamat datang di Artikel !! :V</h2>
+				<h1 id="artikel-name">ARTIKEL</h1>
+				<h2 id="welcome">Selamat datang Doank!</h2>
 				<p>Ini adalah Kumpulan artikel...</p>
 				<p>Silahkan cari artikel yang anda inginkan :) berdasarkan judul dan kategori :)</p>
 				<?php  if(!empty($subKateg)) { ?>
@@ -38,6 +44,7 @@ active
 		 				<tbody>
 		 					<tr>
 		 						<td width="95%">
+
 		 							{!! Form::open(array('url' => 'artikel/search', 'method' => 'get')) !!}
 		 							@if (isset($kata))
 		 								{!! Form::text('kata_kunci',$kata, ['placeholder' => 'Cari Judul Artikel :)', 'class' => 'form-control']) !!}	 
@@ -47,10 +54,10 @@ active
 		 							
 		 						</td>
 		 						<td rowspan="2">
-		 							
-		 							<button type="submit" class="btn btn-primary btn-lg text-center">
-		 								<span class="glyphicon glyphicon-search" aria-hidden="true" style="; width: 70px; font-size: 3.2em"></span><br>
-		 								<i><u>Cari</u></i>
+		 							<button id="btnCari" type="submit" class="btn btn-lg text-center" style="background-color:#e91b23; ">
+		 								<span id="iconBtnCari" class="glyphicon glyphicon-search" aria-hidden="true" style="color: white;">
+		 								</span><br>
+		 								<i><u id="tulisanCari" style="color: white;">Cari</u></i>
 		 							</button>
 		 						</td>
 		 					</tr>
@@ -91,112 +98,117 @@ active
 		 							@endif
 		 						</td>
 		 					</tr>
-
-		 							{!! Form::close() !!}
+		 						{!! Form::close() !!}
 		 				</tbody>
 		 			</table>
 		 		</div>
 		 	</div>
-			<div class="article-left">
-				<h3>Artikel Baru ></h3>
-				<div class="article-grids">
-				<?php $countClearFix2 = 1; ?>
-				@foreach($message as $artikel)
-				<?php 
-					$path = $artikel->kategori .'/'. str_replace('-', '/', $artikel->SubKategori)  .'/'.  $artikel->slug;  
-				?>
+			<div class="tutorial-grids">
 
-					<?php 
-						if ($countClearFix2 <= 4){ 
-					?>
-					<div class="article-grid">
-						<div class="article-grid-left">
-							<a href="{{ asset($path) }}">
-								<?php if ($artikel->path != "") { ?>
-									<img src="{{ asset($artikel->path) }}" alt=" "  />
-								<?php } else { ?>
-									<img src="{{ asset('images/no-image.jpg') }}" alt=" " />
-								<?php } ?>
+			<?php $count = 0; ?>
+			@foreach ($message as $editValue)
+			<?php 
+
+				// untuk begitulah
+				$ribbonHref = "artikel/search?kata_kunci=&select-subKateg=".$editValue->SubKategori;
+				$ribbonWords = str_replace("-", " ", $editValue->SubKategori);
+				$ribbonFinal = ucwords($ribbonWords);
+				$kateg = substr($ribbonFinal, 0, 6);
+				if ($ribbonFinal == "Pengetahuan Umum"){
+					$ribbonFinal = "Umum";
+				}
+			 ?>
+		<div class="col-md-4 tutorial-grid">
+			<div class="panel panel-footer" id="card-style">
+				<div >
+					<table>
+						<tr>
+							<td class="card-title-left">
+							<div>
+							<?php 
+								$toPage = $editValue->kategori."/".str_replace('-', '/', $editValue->SubKategori)."/".$editValue->slug;
+							?>
+								<h2><a id="card-title" href="{{ asset($toPage) }}">{!! ucfirst($editValue->title) !!}</a></h2>
+								<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+								<span><small>{{ ucfirst($editValue->penginput) }}</small></span>
+								<div class="clearfix"></div>
+								<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+								<span><small>{{ Helper::indonesian_date($editValue->created_at) }}</small></span>
+								<div class="clearfix"></div>
+								<span class="fa fa-eye" style=""><b> 0 view</b></span>
+							</div>
+							</td>
+							<td class="card-title-right">
+							<a href="{{ asset($ribbonHref) }}">
+								<div class="ribbon red">
+								<?php if (Helper::checkNewPost($editValue->created_at) != "") echo "<img src=".asset('images/new.gif')." id='new'>" ; ?>
+									<?php if ($kateg == "Coding") {
+											echo '<center><span class="fa fa-code" style="font-size: 1em; margin-bottom:5px;"></span></center>';
+
+											} 
+											else if($kateg == "Berita"){
+												echo '<center><i class="fa fa-newspaper-o" style="font-size: 1.6em; margin-top: -5px;margin-bottom:5px;"></i></center>';
+											}
+											else{
+												echo '<center><i class="fa fa-hacker-news" style="font-size: 2em;margin-bottom:5px;"></i></center>';	
+											}
+
+									?>
+									<span>{{ $ribbonFinal }}</span>
+								</div>
+								</td>
 							</a>
-						</div>
-						<div class="article-grid-right">
-							<h4><a href="{{ asset($path) }}">{{ $artikel->title }}</a></h4>
-							<p>{!! str_limit(strip_tags($artikel->content), 50 , " ........................") !!}
-								<span><?php echo date("D, d-M-y", strtotime($artikel->created_at)); ?></span>
-							</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
+						</tr>
+					</table>
+				</div>
+				<div class="panel-body">
+					<br>
 					<?php  
-							$countClearFix2 += 1; 
-						} 
+						if ($editValue->path != "") {
+					?>
+					
+						<div class="tilte-grid2">
+							<a class="url-tutorial" href="{{ asset($toPage) }}"><img width="270" height="221" src="{!! asset($editValue->path) !!}" alt=" " /></a>
+						</div>	
+					<?php 
+						}
 						else{
 					?>
-					<div class="article-grid" style="margin-top: 10px;">
-						<div class="article-grid-left" >
-							<a href="{{ asset($path) }}">
-								<?php if ($artikel->path != "") { ?>
-									<img src="{{ asset($artikel->path) }}" alt=" "  />
-								<?php } else { ?>
-									<img src="{{ asset('images/no-image.jpg') }}" alt=" " />
-								<?php } ?>
-							</a>
+						<div class="tilte-grid2">
+							<a class="url-tutorial" href="{{ $toPage }}"><img width="270" height="221" src="{{ asset('images/no-image.jpg') }}" alt=" " /></a>
 						</div>
-						<div class="article-grid-right">
-							<h4><a href="{{ asset($path) }}">{{ $artikel->title }}</a></h4>
-							<p>{!! str_limit(strip_tags($artikel->content), 50 , " ........................") !!}
-								<span><?php echo date("D, d-M-y", strtotime($artikel->created_at)); ?></span>
-							</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<?php } ?>
-				@endforeach
+					<?php
+						}
+					?>
+					<!--
+					<iframe src="https://player.vimeo.com/video/40672852?color=ffffff&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> -->
+					<br>
+					<p>{!!str_limit(strip_tags($editValue->content), 140 , " ........")!!} 
+						<a class="url-tutorial" href="{{ asset($toPage) }}" style="padding-top: 10px;">
+						<strong><u><i> Baca Lebih Lanjut....</i></u>
+					</strong></a>
+					</p>
+					
 				</div>
 			</div>
-			<div class="article-right">
-				<?php  if(!empty($subKateg)) { ?>
-				<h3><i>Pencarian Artikel </i><u><?php echo strtoupper($subKateg); ?></u></h3>
-				<?php } else {?>
-				<h3>Artikel-artikel</h3>
-				<?php } ?>
-				<div class="article-right-grids">
-				<?php $countClearFix = 1; ?>
-				@foreach($message2 as $artikel2)
-				<?php 
-					$path2 = $artikel2->kategori .'/'. str_replace('-', '/', $artikel2->SubKategori)  .'/'.  $artikel2->slug;  
-				?>
+		</div>
 
-					<div class="article-right-grid">
-						<?php if ($artikel2->path != "") { ?>
-							<a href="{!! str_replace('-', '/', $artikel2->SubKategori) !!}/{!! $artikel2->slug !!}" >
-								<img src="{{ asset($artikel2->path) }}" alt=" " />
-							</a>
-						<?php } else { ?>
-						<a href="{!! str_replace('-', '/', $artikel2->SubKategori) !!}/{!! $artikel2->slug !!}" >
-							<img src="{{ asset('images/no-image.jpg') }}" alt=" " />
-						</a>
-						<?php } ?>
-						<h4><a href="{{ asset($path2)}}">Artikel {{ ucfirst(str_replace("-", " ", $artikel2->SubKategori)) }}</a></h4>
-						<p>{{ ucfirst($artikel2->title) }}</p>
-					</div>
-					<?php 
-						if ($countClearFix == 3){ 
-					?>
-							<div class="clearfix"> </div>
-					<?php  
-							$countClearFix = 1; 
-						} 
-						else
-							$countClearFix += 1;
-					?>
-				@endforeach
-					<div class="clearfix"> </div>
-					<div style="margin-left:40%;">{!! $message2->appends(Input::only('kata_kunci', 'select-subKateg'))->links() !!}</div>
-				</div>
+				<?php $count += 1; ?>
+				@endforeach	
+				<div class="clearfix"> </div>
 			</div>
-			<div class="clearfix"> </div>
+
+				<?php
+					if ($count <= 0) {
+						 echo '<div style="padding:2em 0 5em;"><center><h2><b><i>Artikel <u>Tidak</u> ditemukan....</i></b></h2><br><img src="'.asset('images/cry-512.png').'"></center></div>';
+					}
+					else{
+						 echo '<center><h4><b><i>'.count($total).' artikel ditemukan....</i></b></h4></center>';
+					}
+				 ?>
+				<center><div>{!! $message->appends(Input::only('kata_kunci', 'select-subKateg'))->links() !!}</div></center>
+				@include('layouts.footer')
 		</div>
 	</div>
 	</div>
-@endsection
+	@endsection

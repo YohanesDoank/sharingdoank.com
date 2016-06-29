@@ -9,15 +9,10 @@ active
 @endsection
 
 @section('css-and-js')
-<script src="js/1.9.1/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href='css/font_OpenSans.css' rel='stylesheet' type='text/css'>
-<link href='css/font_Lato.css' rel='stylesheet' type='text/css'>
-<link href='css/font_PlayFair.css' rel='stylesheet' type='text/css'> -->
+<script src="{{ asset('js/1.9.1/jquery.min.js')}}"></script>
+<script src="{{ asset('js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('js/jquery-ui.min.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.dataTables.min.css')}}">
 <link href='css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
         function hideURLbar(){ window.scrollTo(0,1); }
@@ -38,7 +33,7 @@ active
 
 
 @section('header')
-<div class="header">
+<div class="header" style="background-color: black;">
     <div class="container">
         <div class="header-info">
             <div class="logo">
@@ -77,7 +72,7 @@ active
 
 @section('content')
 
-<div class="articles">
+<div class="content-for-posting">
     <div class="container">
         <div class="article">
         <div class="alerts"></div>

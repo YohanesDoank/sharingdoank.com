@@ -190,7 +190,16 @@ cap
 					    </div>
 					</div>
 					<div class="form-group">
-					    <label for="message" class="control-label col-sm-2">Article Content</label>
+					    <label for="title" class="control-label col-sm-2">Spoiler</label>
+					    <div class="col-sm-10">
+                        	<input type="text" class="form-control" placeholder="Spoiler Post Anda" id="spoiler" required 
+                        		value="{{ $editValue->spoiler }}" >
+                        	<p class="help-block text-danger"></p>
+					    </div>
+					</div>
+					<br><br><br><br>
+					<div class="form-group">
+					    <label for="message" class="control-label col-sm-2">Post Content</label>
 					    <div class="col-sm-10">
 					    	<div id="message">{!! $editValue->content !!}</div>
 					    </div>

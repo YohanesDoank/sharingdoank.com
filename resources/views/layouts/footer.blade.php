@@ -2,32 +2,29 @@
 	<div class="container">
 		<div class="footer-grids">
 			<div class="footer-grid">
-				<h3>About Us</h3>
-				<p>Nullam ac urna velit. Pellentesque in arcu tortor. 
-				Pellentesque nec est et elit varius pulvinar eget vitae sapien. 
-				Aenean vehicula accumsan gravida. Cum sociis natoque penatibus
-				et magnis dis parturient montes, nascetur ridiculus mus. Phasellus 
-				et lectus in urna consequat consectetur ut eget risus. Nunc augue diam, 
-				mattis eu tristique luctus, aliquam vitae massa. Praesent lacinia nisi 
-				sit amet risus cursus porta.</p>
+				<h3>About si Doank</h3>
+				<p>
+					Seorang "<i>Noob</i>-gramer" yang kebetulan juga permula, berkeinginan untuk merancang suatu Website yang berhubungan dengan sharing tentang artikel dan tutorial yang sudah ada, belum ada atau repost dengan sumber-sumber yang terpercaya. Website noob ini dirancang dengan framework Laravel v5.2 .
+				</p>
 			</div>
 			<div class="footer-grid">
 				<h3>Site Page</h3>
 				<ul>
 					<li id="footer-home" class="@yield('footer-home')"><a href="{{ url('/') }}">Home</a></li>
-					<li class="@yield('footer-about')"><a href="{{ url('about')}}">About Us</a></li>
+					<li class="@yield('footer-about')"><a href="{{ url('about')}}">About si Doank</a></li>
 					<li id="footer-single" class="@yield('footer-gallery')"><a href="{{ url('articles')}}">Gallery</a></li>
 					<li class="@yield('footer-contacts')"><a href="{{ url('contact')}}">Contact</a></li>
 				</ul>
 			</div>
 			<div class="footer-grid">
-				<h3>Praesent pharetra</h3>
+				<h3>Pencarian Terfavorit</h3>
 				<ul>
-					<li><a href="single">Vestibulum iaculis scelerisque</a></li>
-					<li><a href="single">Cras aliquam erat</a></li>
-					<li><a href="single">Morbi imperdiet ipsum</a></li>
-					<li><a href="single">Donec faucibus mollis</a></li>
-					<li><a href="single">Praesent lacinia nisi</a></li>
+					<li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=coding-php') }}">Ngoding PHP</a></li>
+					<li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=coding-vb') }}">Ngoding VB</a></li>
+					<li><a href="{{ asset('artikel/search?kata_kunci=&select-subKateg=coding')}}">Bacaan Ngoding</a></li>
+					<li><a href="{{ asset('artikel/search?kata_kunci=&select-subKateg=berita-hot') }}">Berita terkini</a></li>
+					<li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=game-pc') }}">Game PC</a></li>
+					<li><a href="{{ asset('tutorials/search?kata_kunci=&select-subKateg=game-ps') }}">Game PLayStation</a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -36,42 +33,6 @@
 	</div>
 	<div class="footer-bottom">
 	<div class="container">
-		<p>Template by<a href="http://w3layouts.com/"> w3layouts</a></p>
+		<p>Developed By <a href="{{ url('about')}}">Si Doank</a><br>Template by <a href="http://w3layouts.com/"> w3layouts</a></p>
 	</div>
 	</div>
-
-<script type="text/javascript">
-	$(window).bind("load", function() { 
-       
-       var footerHeight = 0,
-           footerTop = 0,
-           $footer = $(".footer");
-           
-       positionFooter();
-       
-       function positionFooter() {
-       
-                footerHeight = $footer.height();
-                footerTop = ($(window).scrollTop()+$(window).height()-footerHeight)+"px";
-       
-               if ( ($(document.body).height()+footerHeight) < $(window).height()) {
-                   $footer.css({
-                        position: "absolute"
-                   }).animate({
-                        top: footerTop
-                   })
-               } else {
-                   $footer.css({
-                        position: "static"
-                   })
-               }
-               
-       }
-
-       $(window)
-               .scroll(positionFooter)
-               .resize(positionFooter)
-               
-});
-</script>
-</script>

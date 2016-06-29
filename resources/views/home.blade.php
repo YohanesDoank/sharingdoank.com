@@ -7,11 +7,7 @@ Sharing's Doank's
 @section('css-and-js')
 
 <link href="{{ asset('css/corner-ribbon.css') }}" rel='stylesheet' type='text/css'>
-<style type="text/css">
-a:hover {
-}
-
-</style>
+<script type="text/javascript" src="{{ asset('js/index/onlyIndex.js') }}"></script>
 @endsection
 
 @section('selected-index')
@@ -22,13 +18,20 @@ active
 cap1
 @endsection
 
+@section('hoverBrand')
+.navbar-inverse .navbar-brand:hover { color: orange;}
+.navbar-inverse .navbar-nav>.active>a{ background-color: black;border-bottom: solid .4em orange;}
+@endsection
+
 @section('content')
 <div class="content tut">
 	<div class="container">
 		<div class="content-text facilis">	
 			<div class="title">
+			<?php $cekAdaPostAtauTidak = "tidak"; ?>
 			@foreach ($message as $editValue)
 			<?php
+				$cekAdaPostAtauTidak = "ada";
 
 				if($editValue->kategori == "tutorial")
 				 	$warnaRibbon = "blue";
@@ -69,7 +72,7 @@ cap1
 					<?php  
 						if ($editValue->path != "") {
 					?>
-							<a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{{ $editValue->slug }}"><img width="100" src="{!! $editValue->path !!}" alt=" " /></a>
+							<a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{{ $editValue->slug }}"><img width="100" src="{{ asset($editValue->path) }}" alt=" " /></a>
 					<?php 
 						}
 						else{
@@ -80,7 +83,7 @@ cap1
 					?>
 					</center>
 					<p class="vel"><a href="{!! $editValue->kategori !!}/{!! str_replace('-', '/', $editValue->SubKategori) !!}/{{ $editValue->slug }}">
-						{!! ucfirst(str_limit(strip_tags($editValue->content), 300 , " ........................")) !!}
+						{!! ucfirst(str_limit(strip_tags($editValue->spoiler), 300 , " ........................")) !!}
 					</a></p>
 					<p class="Sed">
 					</p> 
@@ -93,9 +96,40 @@ cap1
 			</div>
 			<!-- <center><div class="border"><p></p></div></center> -->
 			@endforeach
+			<?php  
+				if ($cekAdaPostAtauTidak == "tidak") {
+					echo '<center><h1>Judul yang anda Cari tidak ada </h1><br><img src="'.asset('images/cry-512.png').'"></center>';
+				}	
+			?>
 			</div>
 			<div class="categories">
 				<div class="categ">
+					<div class="cat">
+						<h3>Cari Post </h3>
+						<ul>
+							<li>
+							{!! Form::open(array('url' => 'home/search', 'method' => 'get')) !!}
+								<p>Tulis judul dibawah ini</p>
+								<div class="input-group">
+									<input type="text" class="form-control" name="kata_kunci" placeholder="Search"
+									
+									<?php  
+										if (isset($kata)) {
+											echo 'value='.'"'.$kata.'"';
+										}
+									?>
+
+									>
+									<span class="input-group-btn">
+										<button type="submit" class="btn btn-default" style="background-color: orange;"><span class="glyphicon glyphicon-search"></span></button>
+									</span>
+								</div>
+							{!! Form::close() !!}
+				 			@if (Session::has('errors'))
+				 				<span class="alert-danger"><i> {{ Session::get('errors')}} </i></span>
+				 			@endif
+							</li>
+					</div>
 					<div class="cat">
 						<h3>Jenis Artikel</h3>
 						<ul>
@@ -143,17 +177,3 @@ cap1
 	</div>
 @endsection
 
-@push('scripts')
-<script type="text/javascript">
-	// $('#footer-home').attr('class', 'cap1');
-	var arrayVarImg = [100];
-		var counter = 0;
-		$('.img-responsive').each(function () {
-	      var curSrc = $(this).attr('src');
-	      // alert(curSrc.length);
-	      arrayVarImg[counter] = curSrc.substr(6, curSrc.length - 5);
-	      $(this).attr('src', arrayVarImg[counter]);
-	      counter += 1;
-    	});
-</script>
-@endpush

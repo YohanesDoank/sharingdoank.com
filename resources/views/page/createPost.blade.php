@@ -32,7 +32,7 @@ active
 @endsection
 
 @section('content')
-<div class="content">
+<div class="content-for-posting">
 	<div class="container">
 		<div class="content-text facilis">
 		<div class="alerts"></div>
@@ -90,7 +90,15 @@ active
 					    </div>
 					</div>
 					<div class="form-group">
-					    <label for="message" class="control-label col-sm-2">Article Content</label>
+					    <label for="title" class="control-label col-sm-2">Spoiler</label>
+					    <div class="col-sm-10">
+                        	<input type="text" class="form-control" placeholder="Spoiler Post Anda" id="spoiler" required data-validation-required-message="Harap tuliskan judul artikel.">
+                        	<p class="help-block text-danger"></p>
+					    </div>
+					</div>
+					<br><br><br><br>
+					<div class="form-group">
+					    <label for="message" class="control-label col-sm-2">Post Content</label>
 					    <div class="col-sm-10">
 					    	<div id="message" required data-validation-required-message="Harap tuliskan content artikel."></div>
 					    </div>

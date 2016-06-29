@@ -74,9 +74,7 @@ Single Sharing's Doank's
 					?>
 				</center>
 				</div>
-					<p class="vel"><a href="{!! $message->slug !!}">Phasellus vel arcu vitae neque sagittis aliquet ac at purus.
-					Vestibulum varius eros in dui sagittis non ultrices orci hendrerit.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></p>
+					<br><br>
 					<p class="Sed">
 						{!! $message->content !!}
 					</p> 
@@ -247,15 +245,3 @@ Single Sharing's Doank's
 	</div>
 	</div>
 @endsection
-@push('scripts')
-<script type="text/javascript">
-	$('#footer-single').attr('class', 'cap1');
-	if ($('#ada').html() != null) {
-		$('#related').html('Related Posts');
-	}
-	else{
-		$('#related').html('Related Posts Not Found');
-	}
-
-</script>
-@endpush

@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 
 
@@ -120,7 +119,7 @@ $(document).ready(function(){
 
     $('#message').summernote({
         height : 400,
-        placeholder : "Write down your content of articles here..."
+        placeholder : "Write down your content of post here..."
     });
 
     function previewPost(){
@@ -172,6 +171,7 @@ $(document).ready(function(){
         if (value) {
             var isiArtikel = $('#message').summernote('code');
             var titleArtikel = $('#title').val();
+            var spoiler = $('#spoiler').val();
             var kategori = $('input[name="etype"]:checked').val();
             var subKategori = $('input[name="etype2"]:checked').val();
             var anakSubKategori =  $('input[name="etype3"]:checked').val();
@@ -185,11 +185,11 @@ $(document).ready(function(){
             }
 
             if($('#inputpicture').val() == ""){
-                requestUploadArtikel(titleArtikel, isiArtikel, kategori, subKategori, penginput, null);
+                requestUploadArtikel(titleArtikel, isiArtikel, spoiler, kategori, subKategori, penginput, null);
             }
             else{
                 var ajax = function(imageData){
-                requestUploadArtikel(titleArtikel, isiArtikel, kategori, subKategori, penginput, imageData);
+                requestUploadArtikel(titleArtikel, isiArtikel, spoiler, kategori, subKategori, penginput, imageData);
                 }
 
                 imageupload($('#inputpicture').get(0), ajax);
@@ -200,7 +200,7 @@ $(document).ready(function(){
         }
     }
 
-    function requestUploadArtikel(title, isi, kategori, subKategori, penginput, imageData){
+    function requestUploadArtikel(title, isi, spoiler, kategori, subKategori, penginput, imageData){
         $.ajaxSetup({
             headers: {
               'X-CSRF-TOKEN':$('meta[name="csrf_token"]').attr('content')
@@ -212,6 +212,7 @@ $(document).ready(function(){
             data: {
                 'title' : title,
                 'isi'   : isi,
+                'spoiler' : spoiler,
                 'kategori' : kategori,
                 'subKategori' : subKategori, 
                 'penginput' : penginput,

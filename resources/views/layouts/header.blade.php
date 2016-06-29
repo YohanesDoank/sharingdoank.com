@@ -1,12 +1,13 @@
+<style type="text/css">@yield('hoverBrand')</style>
 <div class="header nav-down" id="header">
 	<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
   <div class="container">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar" id="icon-bar1"></span>
+        <span class="icon-bar" id="icon-bar2"></span>
+        <span class="icon-bar" id="icon-bar3"></span>
       </button>
       <a href="{{ asset('/') }}" class="navbar-brand" id="brand"><strong>S</strong>haring<strong>D</strong>oank</a>
     </div>
@@ -75,7 +76,7 @@
           <a href="{{ url('contact') }}"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"> <strong>Contact</strong></span></a>
         </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" style="margin-left: 5px;">
         @if (Auth::check())
               <li class="@yield('selected-create')" >
                   <a href="{{ url('/createPost') }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"><strong> Create-Post</strong></span></a>

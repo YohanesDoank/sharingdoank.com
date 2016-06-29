@@ -8,6 +8,10 @@
     font-family: 'belepotanregular';   
     color: blue;
 }
+#artikel-name{
+    font-family: 'belepotanregular';   
+    color: #e91b23;
+}
 #welcome{
     font-family: 'belepotanregular';
 }
@@ -273,8 +277,7 @@
     -o-transition:0.5s all;
     -ms-transition:0.5s all;
 }
-.ribbon.base:hover{
-    
+.ribbon.base:hover, .ribbon.red:hover{
     color:black;
 }
 
@@ -298,6 +301,12 @@
     background: #e91b23;
     color: #fff;
     border-right: 5px solid #f2787d;
+    box-shadow:15px 10px 13px #adadad;
+    transition:0.5s all;
+    -webkit-transition:0.5s all;
+    -moz-transition:0.5s all;
+    -o-transition:0.5s all;
+    -ms-transition:0.5s all;s
 }
 .ribbon.orange {
     background: #ff8a3c;
