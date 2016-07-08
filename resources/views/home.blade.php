@@ -1,4 +1,4 @@
-@extends('layouts.layout_spesific')
+@extends('layouts.layout')
 
 @section('title')
 Sharing's Doank's 
@@ -24,11 +24,12 @@ cap1
 @endsection
 
 @section('content')
-<div class="content tut">
-	<div class="container">
+<div class="content tut"> 
 		<div class="content-text facilis">	
 			<div class="title">
-			<?php $cekAdaPostAtauTidak = "tidak"; ?>
+			<?php $cekAdaPostAtauTidak = "tidak"; 
+				  $countRowCat = Helper::jumlahRowKategoriPost();
+			?>
 			@foreach ($message as $editValue)
 			<?php
 				$cekAdaPostAtauTidak = "ada";
@@ -105,7 +106,7 @@ cap1
 			<div class="categories">
 				<div class="categ">
 					<div class="cat">
-						<h3>Cari Post </h3>
+						<h3>Cari Post <span class="glyphicon glyphicon-search" aria-hidden="true" style="float: right; font-size: 0.8em;"></span></h3>
 						<ul>
 							<li>
 							{!! Form::open(array('url' => 'home/search', 'method' => 'get')) !!}
@@ -131,24 +132,25 @@ cap1
 							</li>
 					</div>
 					<div class="cat">
-						<h3>Jenis Artikel</h3>
+						<h3>Jenis Artikel <span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="float: right; font-size: 0.8em;"></span></h3>
 						<ul>
-							<li><a href="artikel/search?kata_kunci=&select-subKateg=coding">Macam-macam bacaan Ngoding</a></li>
-							<li><a href="artikel/search?kata_kunci=&select-subKateg=berita-hot">Berita Hot terkini</a></li>
-							<li><a href="artikel/search?kata_kunci=&select-subKateg=pengetahuan-umum">Pengetahuan umum yang unik</a></li> 
+							<li><a href="artikel/search?kata_kunci=&select-subKateg=coding">Macam-macam bacaan Ngoding ({{ $countRowCat[0]}})</a></li>
+							<li><a href="artikel/search?kata_kunci=&select-subKateg=berita-hot">Berita Hot terkini  ({{ $countRowCat[1]}})</a></li>
+							<li><a href="artikel/search?kata_kunci=&select-subKateg=pengetahuan-umum">Pengetahuan umum yang unik ({{ $countRowCat[2]}})</a></li> 
 					</div>
 					<div class="cat">
-						<h3>Jenis Tutorial</h3>
+						<h3>Jenis Tutorial <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="float: right; font-size: 0.8em;"></span>
+						</h3>
 						<ul>
-							<li><a href="tutorials/search?kata_kunci=&select-subKateg=game-mobile">Game Mobile</a></li>
-							<li><a href="tutorials/search?kata_kunci=&select-subKateg=game-pc">Game PC</a></li>
-							<li><a href="tutorials/search?kata_kunci=&select-subKateg=game-ps">Game PLayStation</a></li>
-							<li><a href="tutorials/search?kata_kunci=&select-subKateg=game-jadul">Game Jaman Dulu</a></li>
-							<li><a href="tutorials/search?kata_kunci=&select-subKateg=sulap">Sulap</a></li>
-							<li><a href="tutorials/search?kata_kunci=&select-subKateg=coding-php">Ngoding PHP</a></li>
-							<li><a href="tutorials/search?kata_kunci=&select-subKateg=coding-java-desktop">Ngoding Java dengan Netbeans</a></li>
-							<li><a href="tutorials/search?kata_kunci=&select-subKateg=coding-java-mobile">Ngoding Android dengan Java</a></li>
-							<li><a href="tutorials/search?kata_kunci=&select-subKateg=coding-vb">Ngoding VB</a></li>
+							<li><a href="tutorials/search?kata_kunci=&select-subKateg=coding-php">Ngoding PHP ({{ $countRowCat[3]}})</a></li>
+							<li><a href="tutorials/search?kata_kunci=&select-subKateg=coding-vb">Ngoding VB ({{ $countRowCat[4]}})</a></li>
+							<li><a href="tutorials/search?kata_kunci=&select-subKateg=coding-java-desktop">Ngoding Java dengan Netbeans ({{ $countRowCat[5]}})</a></li>
+							<li><a href="tutorials/search?kata_kunci=&select-subKateg=coding-java-mobile">Ngoding Android dengan Java ({{ $countRowCat[6]}})</a></li>
+							<li><a href="tutorials/search?kata_kunci=&select-subKateg=sulap">Sulap ({{ $countRowCat[7]}})</a></li>
+							<li><a href="tutorials/search?kata_kunci=&select-subKateg=game-ps">Game PLayStation  ({{ $countRowCat[8]}})</a></li>
+							<li><a href="tutorials/search?kata_kunci=&select-subKateg=game-pc">Game PC ({{ $countRowCat[9]}})</a></li>
+							<li><a href="tutorials/search?kata_kunci=&select-subKateg=game-mobile">Game Mobile ({{ $countRowCat[10]}})</a></li>
+							<li><a href="tutorials/search?kata_kunci=&select-subKateg=game-jadul">Game Jaman Dulu ({{ $countRowCat[11]}})</a></li>
 						</ul>
 					</div>
 					<div class="recent-com">
@@ -171,9 +173,8 @@ cap1
 			</div>
 			<div class="clearfix"> </div>
 			<div id="index-pagination">{!! $message->render() !!}</div>
-			@include('layouts.footer')
-		</div>
+		</div> 
 	</div>
-	</div>
+	<div class="clearfix"> </div>
 @endsection
 

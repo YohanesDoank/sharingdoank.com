@@ -32,12 +32,12 @@ active
 @endsection
 
 @section('content')
-<div class="content-for-posting">
-	<div class="container">
+<div class="content-for-posting-create"> 
 		<div class="content-text facilis">
+		<div class="container">
 		<div class="alerts"></div>
 				<div class="some-title">
-					<h3>Create POST</h3>
+					<h3 style="color: white">Create POST</h3>
 				</div>
 					<!-- ini bagian summernote-->
 					<br><br><br>
@@ -125,6 +125,5 @@ active
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
+	</div> 
 @endsection

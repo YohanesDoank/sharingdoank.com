@@ -22,7 +22,6 @@ active
 
 @section('content')
 <div class="content tut">
-	<div class="container">
 		<div class="content-text facilis">
 			<div class="content-info">
 				<h1 id="artikel-name">ARTIKEL</h1>
@@ -38,7 +37,7 @@ active
 		 			<table class="table table-hover">
 		 				<thead>
 		 					<tr>
-		 						<th colspan="2">Cari Judul Artikel - <i><small>opsional</small></i></th>
+		 						<th colspan="2" style="color: white;">Cari Judul Artikel - <i><small>opsional</small></i></th>
 		 					</tr>
 		 				</thead>
 		 				<tbody>
@@ -63,7 +62,7 @@ active
 		 					</tr>
 		 					<tr>
 		 						<td>
-		 						<label for="title" class="control-label">Kategori Post - <i><small>required</small></i>
+		 						<label for="title" class="control-label" style="color: white;">Kategori Post - <i><small>required</small></i>
 				 					@if (Session::has('errors'))
 				 						<span class="alert-danger"> -<i> {{ Session::get('errors')}} </i></span>
 				 					@endif
@@ -200,15 +199,15 @@ active
 
 				<?php
 					if ($count <= 0) {
-						 echo '<div style="padding:2em 0 5em;"><center><h2><b><i>Artikel <u>Tidak</u> ditemukan....</i></b></h2><br><img src="'.asset('images/cry-512.png').'"></center></div>';
+						 echo '<div style="padding:2em 0 5em;"><center><h2 style="color: white;"><b><i>Artikel <u>Tidak</u> ditemukan....</i></b></h2><br><img src="'.asset('images/cry-512.png').'"></center></div>';
 					}
 					else{
-						 echo '<center><h4><b><i>'.count($total).' artikel ditemukan....</i></b></h4></center>';
+						 echo '<center><h4 style="color: white;"><b><i>'.count($total).' artikel ditemukan....</i></b></h4></center>';
 					}
 				 ?>
 				<center><div>{!! $message->appends(Input::only('kata_kunci', 'select-subKateg'))->links() !!}</div></center>
 				@include('layouts.footer')
 		</div>
 	</div>
-	</div>
+	<div class="clearfix"></div>
 	@endsection

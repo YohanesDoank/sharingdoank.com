@@ -1,5 +1,7 @@
 <?php 
 namespace App\Helpers;
+use App\Artikel;
+
 
    class Helper {
       public static function displayString($string){
@@ -52,7 +54,36 @@ namespace App\Helpers;
 		}
 
 		return $baru;
+	}
+	public static function jumlahRowKategoriPost(){
+		$totalRowFound;
+		$counter = 0;
+		$artTotal;
+		$tutTotal;
+		$kategori = ["artikel", "tutorial"];
+		$subArt = ["coding", "berita-hot", "pengetahuan-umum"];
+		$subTut = ["coding-php","coding-vb","coding-java-desktop","coding-java-mobile", "sulap", "game-ps", "game-pc", "game-mobile", "game-jadul"];
+		// $subTutor = [];
+		for ($i=0; $i < 2 ; $i++) { 
+			if ($i == 0) {
+				for ($j=0; $j < count($subArt) ; $j++) { 
+					// $artTotal[$i] = Artikel::where("kategori","=","artikel")->count();
+					$artTotal[$j] = Artikel::where("kategori","=",$kategori[$i])->where("subKategori","like","%".$subArt[$j]."%")->count();
+					$totalRowFound[$counter] = $artTotal[$j];
+					$counter += 1;
 
-
+				}
+			}
+			else{
+				for ($j=0; $j < count($subTut) ; $j++) { 
+					// $artTotal[$i] = Artikel::where("kategori","=","artikel")->count();
+					$tutTotal[$j] = Artikel::where("kategori","=",$kategori[$i])->where("subKategori","like","%".$subTut[$j]."%")->count();
+					$totalRowFound[$counter] = $tutTotal[$j];
+					$counter += 1;
+				}	
+			}
+			
+		}
+        return $totalRowFound;
 	}
   }

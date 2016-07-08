@@ -32,74 +32,36 @@ active
 @endsection
 
 
-@section('header')
-<div class="header" style="background-color: black;">
-    <div class="container">
-        <div class="header-info">
-            <div class="logo">
-                <a href=""><img src="images/logo.png" alt=" " /></a>
-            </div>
-            <div class="logo-right">
-                <span class="menu"><img src="images/menu.png" alt=" "/></span>
-                <ul class="nav1">
-                    <li><a href="{{ url('/') }}">Home</a></li>
-                    <li><a href="articles">Articles</a></li>
-                    <li><a href="tutorials">Tutorials</a></li>
-                    <li><a href="contact">Contact</a></li>
-                    @if (Auth::check())
-                    <li class="@yield('selected-create')">
-                        <a href="{{ url('/createPost') }}">Create Post</a>
-                    </li>
-                    <li class="cap">
-                        <a href="{{ url('/showPost') }}">Kelola Post</a>
-                    </li>
-                    <li class="@yield('selected-logout')">
-                        <a href="{{ url('/logout') }}">Logout</a>
-                    </li>
-                    @else
-                    <!--<li class="@yield('selected-login')">
-                        <a href="{{ url('/login') }}">Login</a>
-                    </li>-->
-                    @endif
-                </ul>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-    </div>
-</div>
-
-@endsection
-
 @section('content')
 
-<div class="content-for-posting">
-    <div class="container">
-        <div class="article">
-        <div class="alerts"></div>
-        <div class="alerts2"></div>
-            <div class="content-info">
-                <h2>List Post</h2>
-                <p>Ini adalah daftar Postingan...</p>
+<div class="content-for-posting-list"> 
+        <div class="content-text facilis">
+            <div class="container">
+                <div class="alerts"></div>
+                <div class="alerts2"></div>
+                    <div class="content-info">
+                        <h2>List Post</h2>
+                        <p>Ini adalah daftar Postingan...</p>
+                    </div>
+                    <br>
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="users-table">
+                            <thead>
+                                <tr>
+                                    <th colspan="1">Id</th>
+                                    <th colspan="1">Judul</th>
+                                    <th colspan="1">Slug</th>
+                                    <th colspan="1">Created At</th>
+                                    <th colspan="1">Updated At</th>
+                                    <th colspan="1"><center>Edit</center></th>
+                                    <th colspan="1"><center>Delete</center></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div><center><strong><p id="jumlahPost"></p></strong></center></div>
+                    <div class="clearfix"> </div>
             </div>
-            <br>
-            <div class="table-responsive">
-                <table class="table table-bordered" id="users-table">
-                    <thead>
-                        <tr>
-                            <th colspan="1">Id</th>
-                            <th colspan="1">Judul</th>
-                            <th colspan="1">Slug</th>
-                            <th colspan="1">Created At</th>
-                            <th colspan="1">Updated At</th>
-                            <th colspan="1"><center>Edit</center></th>
-                            <th colspan="1"><center>Delete</center></th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-            <div><center><strong><p id="jumlahPost"></p></strong></center></div>
-            <div class="clearfix"> </div>
-        </div>
     </div>
 </div>
 @stop

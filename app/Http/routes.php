@@ -13,6 +13,10 @@
 
 Route::group(['middleware' => 'web'], function () {
 
+});
+
+
+
 	// khusus untuk showpost dengan plugin datatables
 	// Route::controller('showPost', 'DatatablesController', [
 	// 	'middleware' => 'auth',
@@ -67,6 +71,3 @@ Route::group(['middleware' => 'web'], function () {
 
 	Route::post('addUserAdmin', 'UserController@add');
 	Route::post('Adminlogin', 'UserController@login');
-});
-
-

@@ -1,4 +1,4 @@
-@extends('layouts.layout_spesific')
+@extends('layouts.layout')
 
 @section('title')
 Single Sharing's Doank's 
@@ -14,8 +14,7 @@ Single Sharing's Doank's
 @endsection
 
 @section('content')
-<div class="content tut">
-	<div class="container">
+<div class="content tut"> 
 		<div class="content-text facilis">	
 			<div class="title-single">
 			@foreach ($artikel as $message)
@@ -239,9 +238,8 @@ Single Sharing's Doank's
 					<input type="submit" value="Submit" >
 				</form>
 			</div>
-			<br><br>
-			@include('layouts.footer')
+			<br><br> 
 		</div>
-	</div>
-	</div>
+	</div> 
+<div class="clearfix"></div>
 @endsection
